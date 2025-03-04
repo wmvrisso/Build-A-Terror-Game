@@ -5,6 +5,7 @@ CREATE DATABASE creation_db;
 
 CREATE TABLE monster (
     monst_name VARCHAR(30),
+    monst_type 
     head,
     torso,
     arm1,
@@ -43,4 +44,8 @@ CREATE TABLE torso (
 CREATE TABLE strength (
     id SERIAL PRIMARY KEY
     strength_name VARCHAR(30)
+);
+CREATE TABLE monst_type (
+    id SERIAL PRIMARY KEY
+    monst_type_name VARCHAR(30)
 );
