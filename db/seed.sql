@@ -48,12 +48,12 @@ INSERT INTO arm2 (arm2_name)
 INSERT INTO leg1 (leg1_name)
     VALUES
     ('tree branch'),
-    ('')
+    ('tank track')
 
 INSERT INTO leg2 (leg2_name)
     VALUES
     ('tree branch'),
-    ('')
+    ('tank track')
 
 INSERT INTO torso (torso_name)
     VALUES 
