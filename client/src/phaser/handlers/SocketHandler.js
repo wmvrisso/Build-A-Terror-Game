@@ -1,6 +1,6 @@
 export default class SocketHandler{
     constructor(){
-        this.socket = io('http://localhost:3000');
+        this.socket = ('http://localhost:3000');
     }
 
     getSocket(){
