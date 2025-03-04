@@ -1,3 +1,7 @@
+import CardHandler from '..//helpers/CardHandler';
+import DeckHandler from '..//helpers/DeckHandler';
+import PlayerHandler from '..//helpers/PlayerHandler';
+import SocketHandler from '..//helpers/SocketHandler';
 import { Scene } from 'phaser';
 
 export class Game extends Scene
@@ -13,7 +17,7 @@ export class Game extends Scene
 
         this.add.image(512, 384, 'background').setAlpha(0.5);
 
-        this.add.text(512, 384, 'Make something fun!\nand share it with us:\nsupport@phaser.io', {
+        this.add.text(512, 384, 'Here is how to play', {
             fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
             stroke: '#000000', strokeThickness: 8,
             align: 'center'
