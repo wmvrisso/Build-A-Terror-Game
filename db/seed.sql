@@ -23,7 +23,7 @@ INSERT INTO monst_type (monst_type_name, speed, health, damage)
     ('Undead', 5, 250, 20),
     ('Draconic', 10, 300, 60),
     ('Phantom', 25, 100, 50),
-    ('Golem', 5, 400, 70),
+    ('Golem', 5, 400, 70), 
 
 INSERT INTO strength (strength_name, speed, health, damage)
     VALUES
