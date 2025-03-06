@@ -24,7 +24,7 @@ INSERT INTO strength (strength_name, speed, health, damage)
     ('invisibility'),
 -- think of more
 
-INSERT INTO arm1 (arm1_name, speed, health, damage)
+INSERT INTO arms (arm_name, speed, health, damage) -- combined arm 1 & 2 tables into 'arms'
     VALUES
     ('chainsaw', 5, 50, 80),
     ('dragon claw', 10, 100, 90),
@@ -33,23 +33,23 @@ INSERT INTO arm1 (arm1_name, speed, health, damage)
     ('plasma gun', 7, 70, 100),
     -- add more
 
-INSERT INTO arm2 (arm2_name, speed, health, damage)
-    VALUES
-    ('chainsaw', 5, 50, 80),
-    ('dragon claw', 10, 100, 90),
-    ('bear  claw', 8, 80, 70),
-    ('tree branch', 3, 30, 40),
-    ('plasma gun', 7, 70, 100),
+-- INSERT INTO arm2 (arm2_name, speed, health, damage)
+--     VALUES
+--     ('chainsaw', 5, 50, 80),
+--     ('dragon claw', 10, 100, 90),
+--     ('bear  claw', 8, 80, 70),
+--     ('tree branch', 3, 30, 40),
+--     ('plasma gun', 7, 70, 100),
 
-INSERT INTO leg1 (leg1_name, speed, health, damage)
+INSERT INTO legs (leg_name, speed, health, damage) -- combined leg 1 & 2 tables into 'legs'
     VALUES
     ('tree branch', 3, 30, 10),
     ('tank track', 2, 200, 20)
 
-INSERT INTO leg2 (leg2_name, speed, health, damage)
-    VALUES
-    ('tree branch', 3, 30, 10),
-    ('tank track', 2, 200, 20)
+-- INSERT INTO leg2 (leg2_name, speed, health, damage)
+--     VALUES
+--     ('tree branch', 3, 30, 10),
+--     ('tank track', 2, 200, 20)
 
 INSERT INTO torso (torso_name, speed, health, damage)
     VALUES

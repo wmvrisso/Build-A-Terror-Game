@@ -3,10 +3,10 @@ CREATE DATABASE creation_db;
 ALTER TABLE head ADD COLUMN speed INT, ADD COLUMN health INT, ADD COLUMN damage INT;
 ALTER TABLE monst_type ADD COLUMN speed INT, ADD COLUMN health INT, ADD COLUMN damage INT;
 ALTER TABLE strength ADD COLUMN speed INT, ADD COLUMN health INT, ADD COLUMN damage INT;
-ALTER TABLE arm1 ADD COLUMN speed INT, ADD COLUMN health INT, ADD COLUMN damage INT;
-ALTER TABLE arm2 ADD COLUMN speed INT, ADD COLUMN health INT, ADD COLUMN damage INT;
-ALTER TABLE leg1 ADD COLUMN speed INT, ADD COLUMN health INT, ADD COLUMN damage INT;
-ALTER TABLE leg2 ADD COLUMN speed INT, ADD COLUMN health INT, ADD COLUMN damage INT;
+ALTER TABLE arms ADD COLUMN speed INT, ADD COLUMN health INT, ADD COLUMN damage INT;
+-- ALTER TABLE arm2 ADD COLUMN speed INT, ADD COLUMN health INT, ADD COLUMN damage INT;
+ALTER TABLE legs ADD COLUMN speed INT, ADD COLUMN health INT, ADD COLUMN damage INT;
+-- ALTER TABLE leg2 ADD COLUMN speed INT, ADD COLUMN health INT, ADD COLUMN damage INT;
 ALTER TABLE torso ADD COLUMN speed INT, ADD COLUMN health INT, ADD COLUMN damage INT;
 -- moved ALTER TABLE commands to schema file from seed file. Pretty sure it's supposed to go here?
 
