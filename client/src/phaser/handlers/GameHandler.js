@@ -1,8 +1,22 @@
+<<<<<<< HEAD
+=======
+import SocketHandler from "./SocketHandler";
+
+
+>>>>>>> 74eab80dbc7ca48523d82216993b3d30fe6c242a
 export default class GameHandler {
   constructor() {
     this.games = [];
   }
 
+<<<<<<< HEAD
+=======
+//   Switch to battle phase when both players are ready
+  checkPlayersReady() {
+    if (this.playersReady[1] && this.playersReady[2]) {
+      this.startBattlePhase();
+
+>>>>>>> 74eab80dbc7ca48523d82216993b3d30fe6c242a
   //called when a player finishes building
   playerReady(playerId, head, torso, legs) {
     this.players[playerId].speed = head.speed + torso.speed + legs.speed;
@@ -65,6 +79,15 @@ export default class GameHandler {
     );
     this.socket.sendUpdateHP(defenderId, this.players[defenderId].hp);
     this.checkGameOver();
+<<<<<<< HEAD
+=======
+    }
+  
+    removeGame(game){
+        this.games = this.games.filter(g => g.id !== game.id);
+
+    }
+>>>>>>> 74eab80dbc7ca48523d82216993b3d30fe6c242a
   }
 
   removeGame(game) {
@@ -75,7 +98,34 @@ export default class GameHandler {
     return this.games;
   }
 
+<<<<<<< HEAD
   getGameById(id) {
     return this.games.find((g) => g.id === id);
+=======
+  //called when a player ends their turn
+  endTurn() {
+    this.currentTurn = this.currentTurn === 1 ? 2 : 1; // Switch turn
+    console.log(`Player ${this.currentTurn}'s turn`);
+    this.socket.sendTurnEnded(this.currentTurn);
+  }
+
+  //checks if a player's HP is 0 or less
+  checkGameOver(players) {
+    const player1HP = players[1].hp;
+    const player2HP = players[2].hp;
+
+    if (player1HP <= 0) {
+      this.endGame(2);
+    } else if (player2HP <= 0) {
+      this.endGame(1);
+    }
+  }
+
+
+  //ends the game
+  endGame(winner) {
+    console.log(`Game over! Player ${winner} wins!`);
+    this.socket.sendGameOver(winner);
+>>>>>>> 74eab80dbc7ca48523d82216993b3d30fe6c242a
   }
 }
