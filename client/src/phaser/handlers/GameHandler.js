@@ -1,20 +1,7 @@
-import SocketHandler from "./SocketHandler";
-
-export default class GameHandler {
-  constructor(scene) {
-    this.scene = scene;
-    this.socket = new SocketHandler(scene);
-    this.phase = "build"; // "build" → "battle"
-    this.currentTurn = 1; // Player 1 starts
-    this.playersReady = { 1: false, 2: false }; // Track if players finished building
-  }
-
-//   Switch to battle phase when both players are ready
-  checkPlayersReady() {
-    if (this.playersReady[1] && this.playersReady[2]) {
-      this.startBattlePhase();
+export default class GameHandler{
+    constructor(){
+        this.games = [];
     }
-  }
 
   //called when a player finishes building
   playerReady(playerId, head, torso, legs) {
@@ -59,6 +46,11 @@ export default class GameHandler {
     }
   }
 
+  addGame(game){
+    this.games.push(game);
+  }
+
+
   //ends the game
   endGame(winner) {
     console.log(`Game over! Player ${winner} wins!`);
@@ -72,5 +64,18 @@ export default class GameHandler {
     console.log(`Player ${attackerId} attacks Player ${defenderId} for ${damage} damage`);
     this.socket.sendUpdateHP(defenderId, this.players[defenderId].hp);
     this.checkGameOver();
+    }
+  
+    removeGame(game){
+        this.games = this.games.filter(g => g.id !== game.id);
+    }
+
+    getGames(){
+        return this.games;
+    }
+
+    getGameById(id){
+        return this.games.find(g => g.id === id);
+    }
   }
-}
+
