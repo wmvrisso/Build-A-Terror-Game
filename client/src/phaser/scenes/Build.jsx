@@ -19,7 +19,6 @@ const Build = () => {
 
     return (
         <div className="Build">
-            <h1>Interactive Card Stack</h1>
             <div className="card-container">
                 {cards.map((card) => (
                     <div
@@ -41,5 +40,3 @@ const Build = () => {
 };
 
 export default Build;
-    )
-}
