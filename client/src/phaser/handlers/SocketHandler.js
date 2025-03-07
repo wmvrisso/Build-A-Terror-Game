@@ -20,10 +20,15 @@ export default class SocketHandler {
       this.scene.uiHandler.updateStatusText(`Player ${playerId}'s turn`);
     });
 
+
+
     this.socket.on("gameOver", (winnerId) => {
       console.log(`Game over! Player ${winnerId} wins!`);
       this.scene.uiHandler.updateStatusText(`Game Over! Player ${winnerId} Wins!`);
     });
+
+  
+
   }
 
   sendPlayerReady(playerId) {
@@ -41,6 +46,9 @@ export default class SocketHandler {
   sendGameOver(winner) {
     this.socket.emit("gameOver", { winner });
   }
+
+}
+
 
   sendUpdateHP(playerId, newHP) {
     this.socket.emit("updateHP", { playerId, newHP });
