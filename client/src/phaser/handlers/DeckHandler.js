@@ -16,6 +16,13 @@ export default class DeckHandler {
     }
   }
 
+  // Separates and shuffles deck into categories
+  separateAndShuffleDeck(deck) {
+    this.headDeck = this.shuffleDeck(deck.filter(card => card.type === 'head'));
+    this.torsoDeck = this.shuffleDeck(deck.filter(card => card.type === 'torso'));
+    this.legsDeck = this.shuffleDeck(deck.filter(card => card.type === 'legs'));
+  }
+
 // Shuffles deck
   shuffleDeck(deck) {
     for (let i = deck.length - 1; i > 0; i--) {
@@ -27,16 +34,61 @@ export default class DeckHandler {
 
 //   Draws a number of cards from the deck
   drawCards(num) {
-    if (this.deck.length < num) {
-      console.warn("Not enough cards in the deck!");
+    let deck;
+    switch (deckType) {
+      case 'head':
+        deck = this.headDeck;
+        break;
+      case 'torso':
+        deck = this.torsoDeck;
+        break;
+      case 'legs':
+        deck = this.legsDeck;
+        break;
+      default:
+        console.warn("Invalid deck type!");
+        return [];
+    }
+
+    if (deck.length < num) {
+      console.warn(`Not enough cards in the ${deckType} deck!`);
       return [];
     }
 
-    return this.deck.splice(0, num); // Remove and return drawn cards
+    return deck.splice(0, num); // Remove and return drawn cards
   }
 
 // Counts remaining cards in the deck
-  getRemainingCards() {
-    return this.deck.length;
+  getRemainingCards(deckType) {
+    switch (deckType) {
+      case 'head':
+        return this.headDeck.length;
+      case 'torso':
+        return this.torsoDeck.length;
+      case 'legs':
+        return this.legsDeck.length;
+      default:
+        console.warn("Invalid deck type!");
+        return 0;
+    }
+  }
+    constructor(){
+      this.deck = [];
+  }
+
+  addCard(card){
+      this.deck.push(card);
+  }
+
+  removeCard(card){
+      this.deck = this.deck.filter(c => c.id !== card.id);
+  }
+
+  getDeck(){
+      return this.deck;
+  }
+
+  getCardById(id){
+      return this.deck.find(c => c.id === id);
   }
 }

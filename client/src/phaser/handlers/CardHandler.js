@@ -1,3 +1,4 @@
+
 import Phaser from "phaser";
 
 export default class CardHandler {
@@ -9,17 +10,18 @@ export default class CardHandler {
   createCard(x, y, cardData) {
     const card = this.scene.add.sprite(x, y, "card-back").setInteractive();
 
-    // Store card data
-    card.cardData = cardData;
-    card.faceUp = false;
 
-    // Flip effect when clicked
-    card.on("pointerdown", () => {
-      this.flipCard(card);
-    });
+    addCard(card){
+        this.cards.push(card);
+    }
 
-    return card;
-  }
+    removeCard(card){
+        this.cards = this.cards.filter(c => c.id !== card.id);
+    }
+
+    getCards(){
+        return this.cards;
+    }
 
 // Flip a card
   flipCard(card) {
@@ -27,7 +29,8 @@ export default class CardHandler {
       card.setTexture(card.cardData.image_url);
     } else {
       card.setTexture("card-back");
+
+    getCardById(id){
+        return this.cards.find(c => c.id === id);
     }
-    card.faceUp = !card.faceUp;
-  }
 }

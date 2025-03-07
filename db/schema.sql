@@ -1,4 +1,3 @@
--- Corrected schema.sql
 DROP DATABASE IF EXISTS creation_db;
 CREATE DATABASE creation_db;
 

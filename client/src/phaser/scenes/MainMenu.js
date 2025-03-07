@@ -1,6 +1,6 @@
-import Phaser from 'phaser';
+import { Scene } from 'phaser';
 
-export default class MainMenu extends Phaser.Scene
+export class MainMenu extends Scene
 {
     constructor ()
     {
