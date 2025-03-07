@@ -1,21 +1,33 @@
-export default class CardHandler{
-    constructor(){
-        this.cards = [];
-    }
+import Phaser from "phaser";
 
-    addCard(card){
-        this.cards.push(card);
-    }
+export default class CardHandler {
+  constructor(scene) {
+    this.scene = scene;
+  }
 
-    removeCard(card){
-        this.cards = this.cards.filter(c => c.id !== card.id);
-    }
+  /** 🔹 Render a card in Phaser at a specific position */
+  createCard(x, y, cardData) {
+    const card = this.scene.add.sprite(x, y, "card-back").setInteractive();
 
-    getCards(){
-        return this.cards;
-    }
+    // Store card data
+    card.cardData = cardData;
+    card.faceUp = false;
 
-    getCardById(id){
-        return this.cards.find(c => c.id === id);
+    // Flip effect when clicked
+    card.on("pointerdown", () => {
+      this.flipCard(card);
+    });
+
+    return card;
+  }
+
+  /** 🔹 Flip a card */
+  flipCard(card) {
+    if (!card.faceUp) {
+      card.setTexture(card.cardData.image_url);
+    } else {
+      card.setTexture("card-back");
     }
+    card.faceUp = !card.faceUp;
+  }
 }
