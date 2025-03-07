@@ -1,4 +1,4 @@
-DROP DATABASE IF EXSITS creation_db;
+DROP DATABASE IF EXISTS creation_db;
 CREATE DATABASE creation_db;
 ALTER TABLE head ADD COLUMN speed INT, ADD COLUMN health INT, ADD COLUMN damage INT;
 ALTER TABLE monst_type ADD COLUMN speed INT, ADD COLUMN health INT, ADD COLUMN damage INT;
