@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const socketIo = require("socket.io");
 const http = require("http");
@@ -42,7 +43,22 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     console.log("A player disconnected.");
+
+const cardRoutes = require("./routes/cardRoutes");
+app.use("/cards", cardRoutes);
+
+io.on("connection", (socket) => {
+  console.log("New client connected");
+
+  socket.on("cardFlip", (index) => {
+    io.emit("cardFlip", index);
+
+  });
+
+  socket.on("disconnect", () => {
+    console.log("Client disconnected");
   });
 });
 
-server.listen(3000, () => console.log("Server running on port 3000"));
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => console.log(`Server running on port ${PORT}`));
