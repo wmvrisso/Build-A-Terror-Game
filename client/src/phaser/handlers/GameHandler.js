@@ -17,10 +17,20 @@ export default class GameHandler {
   }
 
   //called when a player finishes building
-  playerReady(playerId) {
+  playerReady(playerId, head, torso, legs) {
+    this.players[playerId].speed = head.speed + torso.speed + legs.speed;
     this.playersReady[playerId] = true;
     this.socket.sendPlayerReady(playerId);
     this.checkPlayersReady();
+  }
+
+  // Determine which player goes first based on speed
+  determineFirstTurn() {
+    if (this.players[1].speed > this.players[2].speed) {
+      this.currentTurn = 1;
+    } else {
+      this.currentTurn = 2;
+    }
   }
 
   //starts battle
@@ -53,5 +63,14 @@ export default class GameHandler {
   endGame(winner) {
     console.log(`Game over! Player ${winner} wins!`);
     this.socket.sendGameOver(winner);
+  }
+
+  // Handle player attack action
+  playerAttack(attackerId, damage) {
+    const defenderId = attackerId === 1 ? 2 : 1;
+    this.players[defenderId].hp -= damage;
+    console.log(`Player ${attackerId} attacks Player ${defenderId} for ${damage} damage`);
+    this.socket.sendUpdateHP(defenderId, this.players[defenderId].hp);
+    this.checkGameOver();
   }
 }
