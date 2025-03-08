@@ -8,7 +8,11 @@ export default class DeckHandler {
     this.legsDeck = [];
   }
 
+
+  //  Loads deck and shuffles
+
   // Loads deck with random cards based on rarity
+
   async loadDeck() {
     try {
       // Fetch 4 random cards for each body part
@@ -38,6 +42,27 @@ export default class DeckHandler {
     }
   }
 
+
+  // Separates and shuffles deck into categories
+  separateAndShuffleDeck(deck) {
+    this.headDeck = this.shuffleDeck(
+      deck.filter((card) => card.type === "head")
+    );
+    this.torsoDeck = this.shuffleDeck(
+      deck.filter((card) => card.type === "torso")
+    );
+    this.legsDeck = this.shuffleDeck(
+      deck.filter((card) => card.type === "legs")
+    );
+  }
+
+
+  // Shuffles deck
+
+// Shuffles deck
+
+
+
   shuffleDeck(deck) {
     for (let i = deck.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -45,6 +70,19 @@ export default class DeckHandler {
     }
     return deck;
   }
+
+
+  //   Draws a number of cards from the deck
+  drawCards(num) {
+    let deck;
+    switch (deckType) {
+      case "head":
+        deck = this.headDeck;
+        break;
+      case "torso":
+        deck = this.torsoDeck;
+        break;
+      case "legs":
 
   drawCards(deckType, num) {
     let deck;
@@ -56,6 +94,7 @@ export default class DeckHandler {
         deck = this.bodyDeck;
         break;
       case "Legs":
+
         deck = this.legsDeck;
         break;
       default:
@@ -67,17 +106,37 @@ export default class DeckHandler {
       console.warn(`Not enough cards in the ${deckType} deck!`);
       return [];
     }
-    return deck.splice(0, num);
+    return deck;
+  }
+
+//   Draws a number of cards from the deck
+  drawCards(num) {
+    if (this.deck.length < num) {
+      console.warn("Not enough cards in the deck!");
+      return [];
+    }
+
+    return this.deck.splice(0, num); // Remove and return drawn cards
+  }
+
+// Counts remaining cards in the deck
+  getRemainingCards() {
+    return this.deck.length;
+  }
+}
+
+
+    return deck.splice(0, num); // Remove and return drawn cards
   }
 
   // Counts remaining cards in the deck
   getRemainingCards(deckType) {
     switch (deckType) {
-      case 'Head':
+      case "head":
         return this.headDeck.length;
-      case 'Body':
-        return this.bodyDeck.length;
-      case 'Legs':
+      case "torso":
+        return this.torsoDeck.length;
+      case "legs":
         return this.legsDeck.length;
       default:
         console.warn("Invalid deck type!");
@@ -85,11 +144,24 @@ export default class DeckHandler {
     }
   }
 
+  addCard(card) {
+    this.deck.push(card);
+  }
+
+  removeCard(card) {
+    this.deck = this.deck.filter((c) => c.id !== card.id);
+  }
+
   getDeck() {
     return [...this.headDeck, ...this.bodyDeck, ...this.legsDeck];
+  getDeck() {
+    return this.deck;
   }
 
   getCardById(id) {
-    return this.getDeck().find(c => c.id === id);
+    return this.deck.find((c) => c.id === id);
+
+    return deck.splice(0, num);
+
   }
 }

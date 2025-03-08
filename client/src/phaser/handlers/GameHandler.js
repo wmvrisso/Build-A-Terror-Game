@@ -1,20 +1,22 @@
+<<<<<<< HEAD
+=======
 import SocketHandler from "./SocketHandler";
 
 
+>>>>>>> 74eab80dbc7ca48523d82216993b3d30fe6c242a
 export default class GameHandler {
-  constructor(scene) {
-    this.scene = scene;
-    this.socket = new SocketHandler(scene);
-    this.phase = "build"; // "build" → "battle"
-    this.currentTurn = 1; // Player 1 starts
-    this.playersReady = { 1: false, 2: false }; // Track if players finished building
+  constructor() {
+    this.games = [];
   }
 
+<<<<<<< HEAD
+=======
 //   Switch to battle phase when both players are ready
   checkPlayersReady() {
     if (this.playersReady[1] && this.playersReady[2]) {
       this.startBattlePhase();
 
+>>>>>>> 74eab80dbc7ca48523d82216993b3d30fe6c242a
   //called when a player finishes building
   playerReady(playerId, head, torso, legs) {
     this.players[playerId].speed = head.speed + torso.speed + legs.speed;
@@ -58,10 +60,9 @@ export default class GameHandler {
     }
   }
 
-  addGame(game){
+  addGame(game) {
     this.games.push(game);
   }
-
 
   //ends the game
   endGame(winner) {
@@ -73,31 +74,34 @@ export default class GameHandler {
   playerAttack(attackerId, damage) {
     const defenderId = attackerId === 1 ? 2 : 1;
     this.players[defenderId].hp -= damage;
-    console.log(`Player ${attackerId} attacks Player ${defenderId} for ${damage} damage`);
+    console.log(
+      `Player ${attackerId} attacks Player ${defenderId} for ${damage} damage`
+    );
     this.socket.sendUpdateHP(defenderId, this.players[defenderId].hp);
     this.checkGameOver();
+<<<<<<< HEAD
+=======
     }
   
     removeGame(game){
         this.games = this.games.filter(g => g.id !== game.id);
 
     }
+>>>>>>> 74eab80dbc7ca48523d82216993b3d30fe6c242a
   }
 
-  //called when a player finishes building
-  playerReady(playerId) {
-    this.playersReady[playerId] = true;
-    this.socket.sendPlayerReady(playerId);
-    this.checkPlayersReady();
+  removeGame(game) {
+    this.games = this.games.filter((g) => g.id !== game.id);
   }
 
-  //starts battle
-  startBattlePhase() {
-    console.log("Starting battle phase...");
-    this.phase = "battle";
-    this.socket.sendPhaseChange(this.phase);
+  getGames() {
+    return this.games;
   }
 
+<<<<<<< HEAD
+  getGameById(id) {
+    return this.games.find((g) => g.id === id);
+=======
   //called when a player ends their turn
   endTurn() {
     this.currentTurn = this.currentTurn === 1 ? 2 : 1; // Switch turn
@@ -122,5 +126,6 @@ export default class GameHandler {
   endGame(winner) {
     console.log(`Game over! Player ${winner} wins!`);
     this.socket.sendGameOver(winner);
+>>>>>>> 74eab80dbc7ca48523d82216993b3d30fe6c242a
   }
 }
