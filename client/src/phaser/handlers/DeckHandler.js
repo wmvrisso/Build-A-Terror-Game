@@ -6,11 +6,9 @@ export default class DeckHandler {
     this.headDeck = [];
     this.bodyDeck = [];
     this.legsDeck = [];
-    }
   }
 
   // Loads deck with random cards based on rarity
-
   async loadDeck() {
     try {
       // Fetch 4 random cards for each body part
@@ -26,6 +24,7 @@ export default class DeckHandler {
             }
           } catch (error) {
             console.warn(`Failed to fetch ${part} card`, error);
+          }
         }
       }
 
@@ -41,15 +40,9 @@ export default class DeckHandler {
 
   // Separates and shuffles deck into categories
   separateAndShuffleDeck(deck) {
-    this.headDeck = this.shuffleDeck(
-      deck.filter((card) => card.type === "head")
-    );
-    this.torsoDeck = this.shuffleDeck(
-      deck.filter((card) => card.type === "torso")
-    );
-    this.legsDeck = this.shuffleDeck(
-      deck.filter((card) => card.type === "legs")
-    );
+    this.headDeck = this.shuffleDeck(deck.filter((card) => card.type === "head"));
+    this.bodyDeck = this.shuffleDeck(deck.filter((card) => card.type === "body")); // Fixed from torso to body
+    this.legsDeck = this.shuffleDeck(deck.filter((card) => card.type === "legs"));
   }
 
   shuffleDeck(deck) {
@@ -153,5 +146,4 @@ export default class DeckHandler {
     }
     return deck.find((c) => c.id === id);
   }
-}
 }
