@@ -43,6 +43,8 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     console.log("A player disconnected.");
+  });
+});
 
 const cardRoutes = require("./routes/cardRoutes");
 app.use("/cards", cardRoutes);
