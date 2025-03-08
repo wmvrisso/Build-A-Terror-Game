@@ -3,7 +3,7 @@ import io from "socket.io-client";
 export default class SocketHandler {
   constructor(scene) {
     this.scene = scene;
-    this.socket = io("http://localhost:3000"); // Adjust when needed
+    this.socket = io("http://localhost:3000");
 
     this.socket.on("phaseChange", (phase) => {
       console.log(`Game phase changed to: ${phase}`);
@@ -20,15 +20,10 @@ export default class SocketHandler {
       this.scene.uiHandler.updateStatusText(`Player ${playerId}'s turn`);
     });
 
-
-
     this.socket.on("gameOver", (winnerId) => {
       console.log(`Game over! Player ${winnerId} wins!`);
       this.scene.uiHandler.updateStatusText(`Game Over! Player ${winnerId} Wins!`);
     });
-
-  
-
   }
 
   sendPlayerReady(playerId) {
@@ -46,9 +41,6 @@ export default class SocketHandler {
   sendGameOver(winner) {
     this.socket.emit("gameOver", { winner });
   }
-
-}
-
 
   sendUpdateHP(playerId, newHP) {
     this.socket.emit("updateHP", { playerId, newHP });
