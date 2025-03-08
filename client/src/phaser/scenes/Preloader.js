@@ -32,6 +32,9 @@ export default class Preloader extends Phaser.Scene
         this.load.setPath('assets');
 
         this.load.image('monster-logo', 'monster-logo.png');
+
+        this.load.image("card-back", "/assets/card-back.png");
+    
     }
 
     create ()
@@ -41,5 +44,7 @@ export default class Preloader extends Phaser.Scene
 
         //  Move to the MainMenu. You could also swap this for a Scene Transition, such as a camera fade.
         this.scene.start('MainMenu');
+
+        this.scene.start("GameScene"); // Move to game scene after assets load
     }
 }
