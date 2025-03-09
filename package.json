@@ -1,16 +1,19 @@
 {
   "dependencies": {
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "nodemon": "^3.1.9",
+    "pg": "^8.13.3",
+    "sequelize": "^6.37.6",
     "socket.io": "^4.8.1"
-  
   },
   "name": "build-a-terror-game",
   "version": "1.0.0",
   "description": "Welcome to **Build-A-Terror**, a monster building game where creativity meets chaos! In this laboratory, you have the power to assemble terrifying monsters from a collection of spare parts from past experiments gone awry.  Once your creature is complete, unleash it in battles against opponents to see whose monstrosity reigns supreme!",
-  "main": "index.js",
-  "devDependencies": {},
+  "main": "./server/server.js",
   "scripts": {
+    "start": "node server/server.js",
+    "dev": "nodemon server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Group 1",

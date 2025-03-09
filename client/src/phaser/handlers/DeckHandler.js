@@ -39,11 +39,11 @@ export default class DeckHandler {
   }
 
   // Separates and shuffles deck into categories
-  separateAndShuffleDeck(deck) {
-    this.headDeck = this.shuffleDeck(deck.filter((card) => card.type === "head"));
-    this.bodyDeck = this.shuffleDeck(deck.filter((card) => card.type === "body")); // Fixed from torso to body
-    this.legsDeck = this.shuffleDeck(deck.filter((card) => card.type === "legs"));
-  }
+separateAndShuffleDeck(deck) {
+  this.headDeck = this.shuffleDeck(deck.filter((card) => card.type === "head"));
+  this.bodyDeck = this.shuffleDeck(deck.filter((card) => card.type === "body")); // Fixed from torso to body
+  this.legsDeck = this.shuffleDeck(deck.filter((card) => card.type === "legs"));
+}
 
   shuffleDeck(deck) {
     for (let i = deck.length - 1; i > 0; i--) {
