@@ -1,13 +1,9 @@
-// import "./App.css";
+// import React from "react";
+// import GameUI from "./gameUI";
+// import "./input.css";
 
 // function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <h1>React App</h1>
-//       </header>
-//     </div>
-//   );
+//   return <GameUI />;
 // }
 
 // export default App;
