@@ -1,7 +1,5 @@
-module.exports = {
-  content: [
-    "./src/**/*.{html,js,jsx,ts,tsx}", // Adjust paths as necessary
-  ],
+export default {
+  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       colors: {
@@ -15,5 +13,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require("tailwindcss"), require("autoprefixer")],
+  plugins: [],
 };
