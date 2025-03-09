@@ -1,14 +1,16 @@
 export default class UIHandler {
   constructor(scene, player1, player2) {
     this.scene = scene;
-    this.player1 = player1;
-    this.player2 = player2;
+    this.player1 = player1 || {hp: 1};
+    this.player2 = player2 || {hp: 1};
     this.uiElements = {};
 
     // Ensure players exist before creating UI
     if (!this.player1 || !this.player2) {
       console.error("UIHandler Error: One or both players are undefined!");
       return;
+    } else {
+      console.log("UIHandler initialized with players:", player1, player2);
     }
 
     // Create UI elements

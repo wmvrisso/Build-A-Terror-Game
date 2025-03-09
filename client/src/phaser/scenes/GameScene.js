@@ -18,9 +18,9 @@ export default class GameScene extends Phaser.Scene {
     this.player1 = new PlayerHandler(this, 1, "Player One");
     this.player2 = new PlayerHandler(this, 2, "Player Two");
 
-    if (this.player1 && this.player2) {
-      this.uiHandler1 = new UIHandler(this, this.player1);
-      this.uiHandler2 = new UIHandler(this, this.player2);
+    if (!this.player1 || !this.player2) {
+      console.error("PlayerHandler instances not initialized correctly!");
+      return;
     } else {
       console.error("PlayerHandler instances not initialized correctly!");
     }
