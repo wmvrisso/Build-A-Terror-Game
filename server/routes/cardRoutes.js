@@ -1,23 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const { Card } = require("../models");
+const Card = require("../models/Card"); // Ensure this matches the module export
 
-// Get a random card of a specific part type
-router.get("/random", async (req, res) => {
+router.get("/cards", async (req, res) => {
   try {
-    const { part } = req.query;
-    if (!["Head", "Body", "Legs"].includes(part)) {
-      return res.status(400).json({ error: "Invalid part type" });
-    }
-
-    const card = await Card.findOne({
-      where: { part: part },
-      order: [["id", "RANDOM"]],
-    });
-
-    res.json(card);
+    const cards = await Card.findAll();
+    res.json(cards);
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch random card" });
+    console.error("Error fetching cards:", error);
+    res.status(500).json({ error: "Internal Server Error" });
   }
 });
 

@@ -18,39 +18,45 @@ export default class GameScene extends Phaser.Scene {
     this.player1 = new PlayerHandler(this, 1, "Player One");
     this.player2 = new PlayerHandler(this, 2, "Player Two");
 
+    if (this.player1 && this.player2) {
+      this.uiHandler1 = new UIHandler(this, this.player1);
+      this.uiHandler2 = new UIHandler(this, this.player2);
+    } else {
+      console.error("PlayerHandler instances not initialized correctly!");
+    }
+
     this.uiHandler1 = new UIHandler(this, this.player1);
     this.uiHandler2 = new UIHandler(this, this.player2);
 
     await this.deckHandler.loadDeck();
 
-    // Draw cards for the build phase (change logic to suit game design)
+    // Player 1: Draw and Render Cards
     const player1Cards = [
       ...this.deckHandler.drawCards("Head", 1),
       ...this.deckHandler.drawCards("Body", 1),
       ...this.deckHandler.drawCards("Legs", 1),
     ];
+    player1Cards.forEach((cardData, index) => {
+      const x = 200 + index * 160;  // Adjusted for better spacing
+      const y = 400;
+      const card = this.cardHandler.createCard(x, y, cardData);
+      this.player1.cards = [...(this.player1.cards || []), card]; // Store reference to the cards
+    });
 
+    // Player 2: Draw and Render Cards
     const player2Cards = [
       ...this.deckHandler.drawCards("Head", 1),
       ...this.deckHandler.drawCards("Body", 1),
       ...this.deckHandler.drawCards("Legs", 1),
     ];
-
-    // Render Player 1's cards
-    player1Cards.forEach((cardData, index) => {
-      const x = 200 + index * 120;
-      const y = 400;
-      this.cardHandler.createCard(x, y, cardData);
-    });
-
-    // Render Player 2's cards
     player2Cards.forEach((cardData, index) => {
-      const x = 600 + index * 120;
-      const y = 400;
-      this.cardHandler.createCard(x, y, cardData);
+      const x = 400 + index * 160;  // Adjusted Player 2's position
+      const y = 600;
+      const card = this.cardHandler.createCard(x, y, cardData);
+      this.player2.cards = [...(this.player2.cards || []), card]; // Store reference to the cards
     });
 
-    // Keyboard Inputs
+    // Set up keyboard input handlers
     this.setupInputHandlers();
   }
 
