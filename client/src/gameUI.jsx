@@ -1,5 +1,4 @@
 import React from "react";
-import "./src/input.css"; // Importing custom CSS for the game UI
 
 const GameUI = () => {
   return (
