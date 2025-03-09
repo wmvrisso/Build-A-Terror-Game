@@ -13,7 +13,8 @@ window.Phaser = Phaser; // Expose Phaser
 
 // Mount React
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <React.StrictMode>
+    // DELETED strict.mode stuff. not sure if it is really needed
+    // <React.StrictMode>
         <GameUI />
-    </React.StrictMode>
+    // </React.StrictMode>
 );

@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 // TODO: uncomment once we decide if we want to have seperate header/footer components
 // import Header from './components/Header'
 // import Footer from './components/Footer'
-import GameUI from "./gameUI";
+import GameUI from "./gameUI.jsx";
 import "./input.css";
 
 function App() {
@@ -11,9 +11,12 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        {/* need to include other pathways if there are any */}
-        {/* TODO: figure out which one of the files is going to be the main page */}
-        <GameUI />
+        {/* TODO: plug-in any other route paths */}
+        {/* TODO: figure out which page is the main page -- gameUI.jsx? */}
+        <Route path="/" element={<GameUI />} />
+        <Route path="/" element={} />
+        <Route path="/" element={} />
+        <Route path="/" element={} />
       </Routes>
       <Footer />
     </Router>
