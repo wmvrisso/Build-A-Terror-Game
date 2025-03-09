@@ -1,31 +1,20 @@
 const express = require("express");
 const router = express.Router();
-const { Card } = require("../models");
+const { getRandomCard } = require("../controllers/cardController");
 
-// GET all cards (full deck)
-router.get("/", async (req, res) => {
-  try {
-    const cards = await Card.findAll();
-    res.json(cards);
-  } catch (error) {
-    res.status(500).json({ error: "Failed to fetch cards" });
-  }
-});
+router.get("/cards/random", async (req, res) => {
+  const { part } = req.query;
+  if (!part) return res.status(400).json({ error: "Missing part type" });
 
-// GET a shuffled deck
-router.get("/shuffle", async (req, res) => {
   try {
-    const cards = await Card.findAll();
-    
-    // Fisher-Yates Shuffle
-    for (let i = cards.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [cards[i], cards[j]] = [cards[j], cards[i]];
+    const card = await getRandomCard(part);
+    if (!card) {
+      return res.status(404).json({ error: "No cards available for this part type" });
     }
-
-    res.json(cards);
+    res.json(card);
   } catch (error) {
-    res.status(500).json({ error: "Failed to shuffle deck" });
+    console.error("Error fetching card:", error);
+    res.status(500).json({ error: "Failed to fetch card" });
   }
 });
 

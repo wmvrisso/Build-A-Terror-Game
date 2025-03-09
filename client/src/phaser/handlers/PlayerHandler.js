@@ -8,6 +8,12 @@ export default class PlayerHandler {
     this.username = username;
     this.hp = 100; // Default HP (change as needed)
     this.monster = {}; // Store selected monster parts
+    this.cards = []; // Store player's cards
+
+    if (typeof this.hp === "undefined") {
+      console.error(`Error: Player ${this.playerId} HP is undefined!`);
+      this.hp = 100; // Fallback value
+    }
 
     this.socket.socket.on("updateHP", (data) => {
       if (data.playerId === this.playerId) {
