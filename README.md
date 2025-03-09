@@ -47,3 +47,82 @@ To get started with **Build-A-Terror**, follow these steps:
 If you have any questions or suggestions, feel free to reach out to
 
 ``
+
+
+```
+Build-A-Terror-Game
+├─ client
+│  ├─ .babelrc
+│  ├─ index.html
+│  ├─ LICENSE
+│  ├─ log.js
+│  ├─ package-lock.json
+│  ├─ package.json
+│  ├─ postcss.config.js
+│  ├─ public
+│  │  ├─ assets
+│  │  │  ├─ background.png
+│  │  │  ├─ bg.png
+│  │  │  ├─ Build.css
+│  │  │  ├─ card-back.png
+│  │  │  ├─ logo.png
+│  │  │  ├─ monster-logo.png
+│  │  │  └─ style.css
+│  │  └─ favicon.png
+│  ├─ README.md
+│  ├─ screenshot.png
+│  ├─ src
+│  │  ├─ App.jsx
+│  │  ├─ components
+│  │  │  ├─ button.jsx
+│  │  │  ├─ Dashboard.js
+│  │  │  ├─ Login.js
+│  │  │  └─ PhaserGame.js
+│  │  ├─ context
+│  │  │  └─ AuthContext.js
+│  │  ├─ gameUI.jsx
+│  │  ├─ index.jsx
+│  │  ├─ input.css
+│  │  ├─ main.jsx
+│  │  ├─ pages
+│  │  │  ├─ Game.js
+│  │  │  └─ Home.js
+│  │  ├─ phaser
+│  │  │  ├─ handlers
+│  │  │  │  ├─ CardHandler.js
+│  │  │  │  ├─ DeckHandler.js
+│  │  │  │  ├─ GameHandler.js
+│  │  │  │  ├─ PlayerHandler.js
+│  │  │  │  ├─ SocketHandler.js
+│  │  │  │  ├─ UIHandler.js
+│  │  │  │  └─ ZoneHandler.js
+│  │  │  └─ scenes
+│  │  │     ├─ Boot.js
+│  │  │     ├─ Build.jsx
+│  │  │     ├─ GameOver.js
+│  │  │     ├─ GameScene.js
+│  │  │     ├─ MainMenu.js
+│  │  │     └─ Preloader.js
+│  │  └─ services
+│  │     └─ api.js
+│  ├─ tailwind.config.js
+│  ├─ vite.config.js
+│  └─ webpack
+│     ├─ config.js
+│     └─ config.prod.js
+├─ db
+│  ├─ query.sql
+│  ├─ schema.sql
+│  └─ seed.sql
+├─ package-lock.json
+├─ package.json
+├─ README.md
+└─ server
+   ├─ controllers
+   │  └─ cardController.js
+   ├─ models
+   │  ├─ Card.js
+   │  └─ db.js
+   └─ server.js
+
+```
