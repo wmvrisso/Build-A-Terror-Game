@@ -5,18 +5,18 @@
 
 const Build = () => {
     const [revealedText, setRevealedText] = useState([]);
-
+  
     const cards = [
-        { id: 1, text: 'Card 1: this is the first card.' },
-        { id: 1, text: 'Card 1: this is the first card.' },
-        { id: 1, text: 'Card 1: this is the first card.' },
-        { id: 1, text: 'Card 1: this is the first card.' },
+        { id: 1, text: 'this is the first card.' },
+        { id: 2, text: 'this is the second card.' },
+        { id: 3, text: 'this is the third card.' },
+        { id: 4, text: 'this is the fourth card.' },
     ];
-
+  
     const handleCardClick = (text) => {
         setRevealedText((prev) => [...prev, text]);
     };
-
+  
     return (
         <div className="Build">
             <div className="card-container">
@@ -31,12 +31,12 @@ const Build = () => {
                 ))}
             </div>
             <div className="revealed-text">
-                {revealedText.map((text, index) => (
-                    <p key={index}>{text}</p>
+                {revealedText.map((text) => (
+                    <p className="card bottom">{text}</p>
                 ))}
             </div>
         </div>
     );
-};
-
-export default Build;
+  };
+  
+  export default Build;
