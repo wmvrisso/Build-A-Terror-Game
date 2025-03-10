@@ -1,0 +1,39 @@
+/* App.css */
+
+/* Style for the header */
+header {
+  background-color: #4caf50; /* Green background */
+  padding: 10px 20px; /* Padding around the header */
+  display: flex; /* Flexbox to align items */
+  justify-content: space-between; /* Space between header content */
+  align-items: center; /* Vertically center items */
+}
+
+h1 {
+  margin: 0; /* Remove default margin */
+  color: white; /* Text color */
+  font-size: 24px; /* Font size */
+}
+
+/* Style for buttons */
+button {
+  background-color: #008cba; /* Blue background */
+  color: white; /* Text color */
+  border: none; /* Remove border */
+  padding: 10px 20px; /* Padding inside the button */
+  font-size: 16px; /* Font size */
+  cursor: pointer; /* Pointer cursor on hover */
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s ease; /* Smooth hover effect */
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #006f8a; /* Darker blue on hover */
+}
+
+/* Position buttons to the right */
+.button-container {
+  display: flex; /* Flexbox to align buttons */
+  gap: 10px; /* Space between buttons */
+}
