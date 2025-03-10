@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 // import Header from './components/Header'
 // import Footer from './components/Footer'
 import GameUI from "./gameUI.jsx";
-//import "./App.css";  TODO: uncomment once App.css file is pushed to directory
+import "./App.css"; 
 
 function App() {
   return (
