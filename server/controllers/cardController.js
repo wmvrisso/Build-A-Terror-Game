@@ -3,20 +3,25 @@ const pool = require("../models/db");
 exports.getRandomCard = async (req, res) => {
   try {
     console.log("Incoming request query:", req.query);
-    
+
     const { part } = req.query;
     if (!part) return res.status(400).json({ error: "Missing part type" });
 
-    const rarityQuery = `SELECT rarity, probability FROM rarity_distribution`;
-    const rarityResults = await pool.query(rarityQuery);
+    console.log("✔️ Received part:", part);
 
-    if (rarityResults.rows.length === 0) {
-      console.error("ERROR: No rarity data found in rarity_distribution.");
+    // Fetch rarity distribution
+    const rarityQuery = `SELECT rarity, probability FROM rarity_distribution`;
+    const [rows] = await pool.query(rarityQuery);//array or object?
+
+    console.log("✔️ Fetched rarity data:", rows); // ✅ Should now display correctly
+
+    if (!rows || rows.length === 0) {
+      console.error("❌ ERROR: No rarity data found in rarity_distribution.");
       return res.status(500).json({ error: "Rarity data missing" });
     }
 
     let rarityPool = [];
-    rarityResults.rows.forEach(row => {
+    rows.forEach(row => {
       let count = Math.floor(row.probability * 1000);
       if (isNaN(count) || count <= 0) {
         console.warn(`Invalid probability value for rarity: ${row.rarity}`);
@@ -27,26 +32,30 @@ exports.getRandomCard = async (req, res) => {
       }
     });
 
-    // Select a random rarity from the pool
+    console.log("✔️ Rarity Pool Generated:", rarityPool.length, "entries");
+
     const selectedRarity = rarityPool[Math.floor(Math.random() * rarityPool.length)];
+    console.log("🎲 Selected Rarity:", selectedRarity);
 
-    // Fetch a random card using correct column names
+    // Fetch a random card
     const cardQuery = `
-      SELECT * FROM cards
-      WHERE part = $1 AND rarity = $2
-      ORDER BY RANDOM()
-      LIMIT 1;
-    `;
-    const cardResult = await pool.query(cardQuery, [part, selectedRarity]);
+    SELECT * FROM cards
+    WHERE part = ? AND rarity = ?
+    ORDER BY RANDOM()
+    LIMIT 1;
+  `;
+  const [cardResult] = await pool.query(cardQuery, { replacements: [part, selectedRarity] });
 
-    if (cardResult.rows.length === 0) {
-      console.warn(`No cards found for part="${part}" and rarity="${selectedRarity}"`);
+    console.log("✔️ Card Query Result:", cardResult.rows);
+
+    if (!cardResult.rows || cardResult.rows.length === 0) {
+      console.warn(`⚠️ No cards found for part="${part}" and rarity="${selectedRarity}"`);
       return res.status(404).json({ error: "No card found" });
     }
 
     res.json(cardResult.rows[0]);
   } catch (error) {
-    console.error("Server error fetching random card:", error);
+    console.error("❌ Server error fetching random card:", error);
     res.status(500).json({ error: "Server error" });
   }
 };
