@@ -4,16 +4,16 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 // import Header from './components/Header'
 // import Footer from './components/Footer'
 import GameUI from "./gameUI.jsx";
-import "./input.css";
+import "./App.css"; 
 
 function App() {
   return (
     <Router>
       <Header />
       <Routes>
-        {/* TODO: plug-in any other route paths */}
         {/* TODO: figure out which page is the main page -- gameUI.jsx? */}
         <Route path="/" element={<GameUI />} />
+        {/* TODO: plug-in any other route paths */}
         {/* <Route path="/" element={} />
         <Route path="/" element={} />
         <Route path="/" element={} /> */}
