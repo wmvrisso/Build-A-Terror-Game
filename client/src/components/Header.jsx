@@ -1,5 +1,6 @@
 // TODO: if we want these, we just need to import into gameui.jsx. otherwise, delete
 import React from "react";
+import "./App.css";
 
 const Header = () => {
     return (

@@ -2,7 +2,7 @@ import React from "react";
 import * as ReactDOM from "react-dom/client";
 import GameUI from "./gameUI";
 import Phaser from "phaser";
-import "./output.css"; 
+import "./styles/output.css"; 
 import "./index.jsx";
 
 
