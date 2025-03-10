@@ -1,4 +1,5 @@
 import React from "react";
+import "./tailwind.config.js";
 // TODO: import css file
 
 const GameUI = () => {
