@@ -39,21 +39,24 @@ exports.getRandomCard = async (req, res) => {
 
     // Fetch a random card
     const cardQuery = `
-    SELECT * FROM cards
-    WHERE part = ? AND rarity = ?
-    ORDER BY RANDOM()
-    LIMIT 1;
-  `;
-  const [cardResult] = await pool.query(cardQuery, { replacements: [part, selectedRarity] });
+      SELECT * FROM cards
+      WHERE part = $1 AND rarity = $2
+      ORDER BY RANDOM()
+      LIMIT 1;
+    `;
+    // Destructure the result; Sequelize returns [results, metadata]
+    const [results] = await pool.query(cardQuery, { replacements: [part, selectedRarity] });
 
-    console.log("✔️ Card Query Result:", cardResult.rows);
+    console.log("✔️ Card Query Result:", results);
 
-    if (!cardResult.rows || cardResult.rows.length === 0) {
+    if (!results || results.length === 0) {
       console.warn(`⚠️ No cards found for part="${part}" and rarity="${selectedRarity}"`);
       return res.status(404).json({ error: "No card found" });
     }
 
-    res.json(cardResult.rows[0]);
+    res.json(results[0]);
+
+
   } catch (error) {
     console.error("❌ Server error fetching random card:", error);
     res.status(500).json({ error: "Server error" });
