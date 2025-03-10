@@ -14,9 +14,9 @@ function App() {
         {/* TODO: plug-in any other route paths */}
         {/* TODO: figure out which page is the main page -- gameUI.jsx? */}
         <Route path="/" element={<GameUI />} />
+        {/* <Route path="/" element={} />
         <Route path="/" element={} />
-        <Route path="/" element={} />
-        <Route path="/" element={} />
+        <Route path="/" element={} /> */}
       </Routes>
       <Footer />
     </Router>
