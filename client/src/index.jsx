@@ -43,11 +43,20 @@ setTimeout(() => {
 }, 1000);
 
 // Mount React
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+const container = document.getElementById("root");
+
+// Ensure React is only mounted once
+if (!container.__reactRoot) {
+    const root = ReactDOM.createRoot(container);
+    root.render(
+        <React.StrictMode>
+            <App />
+        </React.StrictMode>
+    );
+    container.__reactRoot = root; // Store reference to avoid duplicate mounts
+} else {
+    console.warn("React is already mounted.");
+}
+
 
 export default window.phaserGame;

@@ -2,6 +2,8 @@ const pool = require("../models/db");
 
 exports.getRandomCard = async (req, res) => {
   try {
+    console.log("Incoming request query:", req.query);
+    
     const { part } = req.query;
     if (!part) return res.status(400).json({ error: "Missing part type" });
 

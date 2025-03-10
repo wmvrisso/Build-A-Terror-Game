@@ -83,7 +83,6 @@ Build-A-Terror-Game
 │  │  ├─ gameUI.jsx
 │  │  ├─ index.jsx
 │  │  ├─ input.css
-│  │  ├─ main.jsx
 │  │  ├─ pages
 │  │  │  ├─ Game.js
 │  │  │  └─ Home.js
