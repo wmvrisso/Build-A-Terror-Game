@@ -1,5 +1,7 @@
 const pool = require("../models/db");
 
+console.log("Incoming request query:", req.query);
+
 exports.getRandomCard = async (req, res) => {
   try {
     const { part } = req.query;
