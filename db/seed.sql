@@ -147,14 +147,14 @@ INSERT INTO cards (name, monster_name, type, part, speed, attack, defense, healt
 ('Phantom Head (Rare)', 'Shade', 'Phantom', 'Head', 19, 19, 10, 16, 'Rare'),
 ('Phantom Head (Epic)', 'Nightstalker', 'Phantom', 'Head', 26, 28, 30, 29, 'Epic'),
 ('Phantom Head (Legendary)', 'King of Darkness', 'Phantom', 'Head', 37, 33, 32, 31, 'Legendary'),
-('Phantom Head (Mythical)', 'Vecna', 'Mythical', 'Head', 47, 49, 42, 47, 'Mythical');
+('Phantom Head (Mythical)', 'Vecna', 'Mythical', 'Head', 47, 49, 42, 47, 'Mythical'),
 
 -- Phantom Body
 ('Phantom Body (Common)', 'Ghost', 'Phantom', 'Body', 15, 10, 10, 15, 'Common'),
 ('Phantom Body (Rare)', 'Shade', 'Phantom', 'Body', 19, 19, 10, 16, 'Rare'),
 ('Phantom Body (Epic)', 'Nightstalker', 'Phantom', 'Body', 26, 28, 30, 29, 'Epic'),
 ('Phantom Body (Legendary)', 'King of Darkness', 'Phantom', 'Body', 37, 33, 32, 31, 'Legendary'),
-('Phantom Body (Mythical)', 'Vecna', 'Mythical', 'Body', 47, 49, 42, 47, 'Mythical');
+('Phantom Body (Mythical)', 'Vecna', 'Mythical', 'Body', 47, 49, 42, 47, 'Mythical'),
 
 -- Phantom Legs
 ('Phantom Legs (Common)', 'Ghost', 'Phantom', 'Legs', 15, 10, 10, 15, 'Common'),
