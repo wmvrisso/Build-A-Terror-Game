@@ -1,5 +1,5 @@
-DROP DATABASE IF EXISTS creation_db;
-CREATE DATABASE creation_db;
+-- DROP DATABASE IF EXISTS creation_db;
+-- CREATE DATABASE creation_db;
 
 \c creation_db;
 
@@ -14,7 +14,7 @@ CREATE TABLE cards (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     monster_name VARCHAR(100) NOT NULL,
-    type VARCHAR(50) REFERENCES monster_types(name),
+    type INT REFERENCES monster_types(id),
     part VARCHAR(10) CHECK (part IN ('Head', 'Body', 'Legs')) NOT NULL,
     speed INT NOT NULL,
     attack INT NOT NULL,

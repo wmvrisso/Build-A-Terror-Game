@@ -16,13 +16,15 @@ export default class GameScene extends Phaser.Scene {
     this.gameHandler = new GameHandler(this);
 
     this.player1 = new PlayerHandler(this, 1, "Player One");
+    console.log(!this.player1);
     this.player2 = new PlayerHandler(this, 2, "Player Two");
+    console.log(!this.player2);
 
     if (!this.player1 || !this.player2) {
       console.error("PlayerHandler instances not initialized correctly!");
       return;
     } else {
-      console.error("PlayerHandler instances not initialized correctly!");
+      console.log("PlayerHandler instances initialized correctly!");
     }
 
     this.uiHandler1 = new UIHandler(this, this.player1);
@@ -58,6 +60,8 @@ export default class GameScene extends Phaser.Scene {
 
     // Set up keyboard input handlers
     this.setupInputHandlers();
+    console.log(this.player1);
+    console.log(this.player2);
   }
 
   setupInputHandlers() {
