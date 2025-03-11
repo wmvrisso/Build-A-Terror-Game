@@ -11,6 +11,9 @@
   "name": "build-a-terror-game",
   "version": "1.0.0",
   "description": "Welcome to **Build-A-Terror**, a monster building game where creativity meets chaos! In this laboratory, you have the power to assemble terrifying monsters from a collection of spare parts from past experiments gone awry.  Once your creature is complete, unleash it in battles against opponents to see whose monstrosity reigns supreme!",
+
+  "main": "./server/index.js",
+
   "main": "./server/index.jsx",
   "devDependencies": {
     "@tailwindcss/postcss": "^4.0.12",
@@ -20,6 +23,7 @@
     "sequelize-cli": "^6.6.2",
     "tailwindcss": "^4.0.12"
   },
+
   "scripts": {
     "start": "node server/server.js",
     "dev": "nodemon server/server.js",
