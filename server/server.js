@@ -41,7 +41,7 @@ io.on("connection", (socket) => {
 // Sync Database Before Starting Server
 (async () => {
   try {
-    await sequelize.sync({ force: false }); // Change to 'true' ONLY if you want to reset tables
+    await sequelize.sync({ force: true }); // Change to 'true' ONLY if you want to reset tables
     console.log("Database synced successfully.");
     
     // Start the server AFTER database sync

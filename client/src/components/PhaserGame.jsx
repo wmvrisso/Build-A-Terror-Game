@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import Phaser from "phaser";
-import GameScene from "../phaser/GameScene";
+import GameScene from "../phaser/scenes/GameScene";
 
 const PhaserGame = () => {
   const gameContainer = useRef(null);
@@ -21,7 +21,7 @@ const PhaserGame = () => {
     };
   }, []);
 
-  return <div ref={gameContainer} />;
+  return <div id="game-container" ref={gameContainer} />;
 };
 
 export default PhaserGame;

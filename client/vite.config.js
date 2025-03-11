@@ -20,4 +20,11 @@ export default defineConfig({
   css: {
     postcss: "postcss.config.cjs", // Ensure Vite reads the correct file
   },
+  server  : {
+    proxy: { 
+      '/api': {target: 'http://localhost:3000', changeOrigin: true, secure: false}
+    },
+    open: true,
+    port: 5173,
+  },
 });
