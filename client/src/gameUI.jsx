@@ -1,6 +1,13 @@
+import Boot from "./phaser/scenes/Boot";
+import Game from "./phaser/scenes/GameScene";
+import GameOver from "./phaser/scenes/GameOver";
+import MainMenu from "./phaser/scenes/MainMenu";
+import Preloader from "./phaser/scenes/Preloader";
+
 import React from "react";
 import "./styles/gameUI.css"; 
-
+import PhaserGame from "./components/PhaserGame";
+import GameScene from "./phaser/scenes/GameScene";
 
 const GameUI = () => {
 
@@ -40,6 +47,9 @@ const handleBattleClick = () => {
             Battle An Opponent
           </button>
         </section>
+        <PhaserGame currentActiveScene={GameScene}>
+
+        </PhaserGame>
       </main>
 
       {/* Footer */}

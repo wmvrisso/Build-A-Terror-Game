@@ -5,6 +5,7 @@ exports.getRandomCard = async (req, res) => {
     console.log("Incoming request query:", req.query);
 
     const { part } = req.query;
+  
     if (!part) return res.status(400).json({ error: "Missing part type" });
 
     console.log("✔️ Received part:", part);
@@ -40,12 +41,12 @@ exports.getRandomCard = async (req, res) => {
     // Fetch a random card
     const cardQuery = `
       SELECT * FROM cards
-      WHERE part = $1 AND rarity = $2
+      WHERE part = :part AND rarity = :selectedRarity
       ORDER BY RANDOM()
       LIMIT 1;
     `;
     // Destructure the result; Sequelize returns [results, metadata]
-    const [results] = await pool.query(cardQuery, { replacements: [part, selectedRarity] });
+    const [results] = await pool.query(cardQuery, { replacements: {part, selectedRarity} });
 
     console.log("✔️ Card Query Result:", results);
 
