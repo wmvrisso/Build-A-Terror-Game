@@ -4,10 +4,10 @@
 // import MainMenu from "./phaser/scenes/MainMenu";
 // import Preloader from "./phaser/scenes/Preloader";
 
-import React from "react";
+import React, {useState} from "react";
 import "./styles/gameUI.css"; 
-// import PhaserGame from "./components/PhaserGame";
-// import GameScene from "./phaser/scenes/GameScene";
+import PhaserGame from "./components/PhaserGame";
+import GameScene from "./phaser/scenes/GameScene";
 
 const GameUI = () => {
   const [showLoginForm, setShowLoginForm] = useState(false);
@@ -26,7 +26,7 @@ const handleLogin = async (e) => {
       setMessage("Invalid credentials");
     }
   };
-}; 
+ 
 
 const handleCreateAccount = async (e) => {
   e.preventDefault();
@@ -143,7 +143,7 @@ const handleBattleClick = () => {
       </footer>
     </div>
   );
-
+};
 
 export default GameUI; 
 
