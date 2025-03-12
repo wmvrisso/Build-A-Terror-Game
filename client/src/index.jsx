@@ -1,11 +1,11 @@
-import Boot from "./phaser/scenes/Boot";
-import Game from "./phaser/scenes/GameScene";
-import GameOver from "./phaser/scenes/GameOver";
-import MainMenu from "./phaser/scenes/MainMenu";
-import Preloader from "./phaser/scenes/Preloader";
-import React from "react";
-import * as ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+// import Boot from "./phaser/scenes/Boot";
+// import Game from "./phaser/scenes/GameScene";
+// import GameOver from "./phaser/scenes/GameOver";
+// import MainMenu from "./phaser/scenes/MainMenu";
+// import Preloader from "./phaser/scenes/Preloader";
+// import React from "react";
+// import * as ReactDOM from "react-dom/client";
+// import App from "./App.jsx";
 // import Phaser from "phaser";
 
 // console.log("🚀 Initializing Game..."); //debug line to check if index.js is even being run.
@@ -43,20 +43,20 @@ import App from "./App.jsx";
 // }, 1000);
 
 // Mount React
-const container = document.getElementById("root");
+// const container = document.getElementById("root");
 
-// Ensure React is only mounted once
-if (!container.__reactRoot) {
-    const root = ReactDOM.createRoot(container);
-    root.render(
-        <React.StrictMode>
-            <App />
-        </React.StrictMode>
-    );
-    container.__reactRoot = root; // Store reference to avoid duplicate mounts
-} else {
-    console.warn("React is already mounted.");
-}
+// // Ensure React is only mounted once
+// if (!container.__reactRoot) {
+//     const root = ReactDOM.createRoot(container);
+//     root.render(
+//         <React.StrictMode>
+//             <App />
+//         </React.StrictMode>
+//     );
+//     container.__reactRoot = root; // Store reference to avoid duplicate mounts
+// } else {
+//     console.warn("React is already mounted.");
+// }
 
 
-export default window.phaserGame;
+// export default window.phaserGame;

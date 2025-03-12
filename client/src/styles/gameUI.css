@@ -1,4 +1,10 @@
 /* Style for the header */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .game-header {
   width: 100%;
   height: 40px;
@@ -101,6 +107,12 @@ h1 {
   }
 }
 
+.container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+  width: 100%;
+}
+
 .left-container {
   width: 50vw; /* Takes half of the viewport width */
   height: 100vh; /* Full height */
@@ -134,7 +146,7 @@ h1 {
 .right-container {
   width: 50vw;
   height: 100vh;
-  background-image: url("/assets/stoneBG.png");
+  background-image: url("/assets/battlefieldBG.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
