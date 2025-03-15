@@ -1,17 +1,20 @@
 {
+  "type": "module",
+  "name": "build-a-terror-game",
+  "version": "1.0.0",
+  "description": "Welcome to Build-A-Terror...",
+  "main": "./server/main.jsx",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
     "pg": "^8.13.3",
     "react-router-dom": "^7.3.0",
     "sequelize": "^6.37.6",
     "socket.io": "^4.8.1"
   },
-  "name": "build-a-terror-game",
-  "version": "1.0.0",
-  "description": "Welcome to **Build-A-Terror**, a monster building game where creativity meets chaos! In this laboratory, you have the power to assemble terrifying monsters from a collection of spare parts from past experiments gone awry.  Once your creature is complete, unleash it in battles against opponents to see whose monstrosity reigns supreme!",
-  "main": "./server/main.jsx",
   "devDependencies": {
     "nodemon": "^3.1.9",
     "sequelize-cli": "^6.6.2"
@@ -25,14 +28,14 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/phaserjs/template-webpack.git"
+    "url": "git+https://github.com/wmvrisso/Build-A-Terror-Game"
   },
   "keywords": [
     "card",
     "game"
   ],
   "bugs": {
-    "url": "https://github.com/phaserjs/template-webpack/issues"
+    "url": "https://github.com/wmvrisso/Build-A-Terror-Game/issues"
   },
-  "homepage": "https://github.com/phaserjs/template-webpack#readme"
+  "homepage": "https://github.com/wmvrisso/Build-A-Terror-Game#readme"
 }
