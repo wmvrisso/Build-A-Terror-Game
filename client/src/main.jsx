@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App.jsx";
-import SocketHandler from "./phaser/handlers/SocketHandler.js"; // Ensure correct import
+import SocketHandler from "./game/handlers/SocketHandler.js"; // Ensure correct import
 
 const socketTest = new SocketHandler();
 socketTest.socket.emit("testMessage", { message: "Hello WebSocket!" });
