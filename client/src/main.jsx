@@ -1,12 +1,17 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import App from "./App.jsx";
+import SocketHandler from "./phaser/handlers/SocketHandler.js"; // Ensure correct import
+
+const socketTest = new SocketHandler();
+socketTest.socket.emit("testMessage", { message: "Hello WebSocket!" });
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-    <React.StrictMode>
-        <App />
-    </React.StrictMode>
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
 );
+
 
 // import Boot from "./phaser/scenes/Boot";
 // import Game from "./phaser/scenes/GameScene";
