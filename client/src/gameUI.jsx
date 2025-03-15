@@ -4,22 +4,14 @@
 // import MainMenu from "./phaser/scenes/MainMenu";
 // import Preloader from "./phaser/scenes/Preloader";
 
-import React from "react";
-
-import "./styles/gameUI.css";
-import "./styles/output.css";
-
+import React, {useState} from "react";
 import "./styles/gameUI.css"; 
-
-// import PhaserGame from "./components/PhaserGame";
-// import GameScene from "./phaser/scenes/GameScene";
+import PhaserGame from "./components/PhaserGame";
+import GameScene from "./phaser/scenes/GameScene";
 
 const GameUI = () => {
 
   // Button click handlers
-  const handleLogin = () => {
-    alert("Login clicked!");
-  };
   const handleStartGame = () => {
     alert("Start Game clicked!");
   };
@@ -44,7 +36,7 @@ const handleLogin = async (e) => {
       setMessage("Invalid credentials");
     }
   };
-}; 
+ 
 
 const handleCreateAccount = async (e) => {
   e.preventDefault();
@@ -55,15 +47,6 @@ const handleCreateAccount = async (e) => {
     setMessage("Error creating account");
   }
 }; 
-
-const handleStartGame = () => {
-  alert("Start Game clicked!");
-};
-const handleBattleClick = () => {
-  alert("Entering Battle... Prepare for combat! ⚔️");
-  // You can replace this with navigation or game logic later
-};
-
 
   return (
     <div className="">
@@ -93,9 +76,9 @@ const handleBattleClick = () => {
             Battle An Opponent
           </button>
         </section>
-        {/* <PhaserGame currentActiveScene={GameScene}>
+        <PhaserGame currentActiveScene={GameScene}>
 
-        </PhaserGame> */}
+        </PhaserGame>
       </main>
 
       {showLoginForm && (
@@ -166,7 +149,7 @@ const handleBattleClick = () => {
       </footer>
     </div>
   );
-
+};
 
 export default GameUI;
 

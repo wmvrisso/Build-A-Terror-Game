@@ -14,11 +14,6 @@ import Footer from "./components/Footer"; // Uncomment if needed
 const App = () => {
   return (
 
-      <div>
-          <h1></h1>
-          <GameUI />
-      </div>
-
     <Router>
       <Header />
       <Routes>
