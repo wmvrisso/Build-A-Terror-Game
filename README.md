@@ -40,32 +40,18 @@ Build-A-Terror-Game
 │  ├─ package-lock.json
 │  ├─ package.json
 │  ├─ public
-│  │  ├─ assets
-│  │  │  ├─ background.png
-│  │  │  ├─ bg.png
-│  │  │  ├─ Build.css
-│  │  │  ├─ card-back.png
-│  │  │  ├─ greenBG.png
-│  │  │  ├─ logo.png
-│  │  │  ├─ monster-logo.png
-│  │  │  ├─ stoneBG.png
-│  │  │  └─ style.css
-│  │  └─ favicon.png
 │  ├─ README.md
 │  ├─ screenshot.png
 │  ├─ src
 │  │  ├─ App.jsx
 │  │  ├─ components
-│  │  │  ├─ App.css
 │  │  │  ├─ Dashboard.jsx
-│  │  │  ├─ Footer.jsx
-│  │  │  ├─ Header.jsx
-│  │  │  ├─ Left.jsx
 │  │  │  ├─ Login.jsx
 │  │  │  └─ PhaserGame.jsx
 │  │  ├─ context
 │  │  │  └─ AuthContext.js
 │  │  ├─ gameUI.jsx
+│  │  ├─ main.jsx
 │  │  ├─ pages
 │  │  │  ├─ Game.jsx
 │  │  │  └─ Home.jsx
@@ -100,6 +86,18 @@ Build-A-Terror-Game
 │  └─ seed.sql
 ├─ package-lock.json
 ├─ package.json
+├─ public
+│  ├─ background.png
+│  ├─ battlefieldBG.png
+│  ├─ bg.png
+│  ├─ Build.css
+│  ├─ card-back.png
+│  ├─ favicon.png
+│  ├─ greenBG.png
+│  ├─ logo.png
+│  ├─ monster-logo.png
+│  ├─ stoneBG.png
+│  └─ style.css
 ├─ README.md
 └─ server
    ├─ controllers
@@ -128,3 +126,4 @@ To get started with **Build-A-Terror**, follow these steps:
 If you have any questions or suggestions, feel free to reach out to
 
 ``
+

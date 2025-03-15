@@ -1,7 +1,7 @@
-const fs = require('fs');
-const https = require('https');
+import * as fs from 'fs';
+import * as https from 'https';
 
-const main = async () => {
+export const main = async () => {
     const args = process.argv.slice(2);
     const packageData = JSON.parse(fs.readFileSync('./package.json', 'utf8'));
     const event = args[0] || 'unknown';
@@ -28,7 +28,6 @@ const main = async () => {
 
         req.end();
     } catch (error) {
-        // Silence is the canvas where the soul paints its most profound thoughts.
         process.exit(1);
     }
 }
