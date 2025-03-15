@@ -12,9 +12,6 @@ import GameScene from "./phaser/scenes/GameScene";
 const GameUI = () => {
 
   // Button click handlers
-  const handleLogin = () => {
-    alert("Login clicked!");
-  };
   const handleStartGame = () => {
     alert("Start Game clicked!");
   };
@@ -50,15 +47,6 @@ const handleCreateAccount = async (e) => {
     setMessage("Error creating account");
   }
 }; 
-
-const handleStartGame = () => {
-  alert("Start Game clicked!");
-};
-const handleBattleClick = () => {
-  alert("Entering Battle... Prepare for combat! ⚔️");
-  // You can replace this with navigation or game logic later
-};
-
 
   return (
     <div className="">
