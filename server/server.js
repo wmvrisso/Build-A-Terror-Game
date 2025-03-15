@@ -1,22 +1,14 @@
-require("dotenv").config({ path: __dirname + "/.env" }); // Load environment variables
-
-console.log("DB_USER:", process.env.DB_USER);
-console.log("DB_PASSWORD:", process.env.DB_PASSWORD ? "Exists" : "Not Found!");
-console.log("DB_HOST:", process.env.DB_HOST);
-console.log("DB_PORT:", process.env.DB_PORT);
-console.log("DB_NAME:", process.env.DB_NAME);
-
-const express = require("express");
-const cors = require("cors");
-const sequelize = require("./models/db"); // Ensure correct DB connection
-const cardRoutes = require("./routes/cardRoutes"); // Ensure this exists
+import "dotenv/config";
+import express from "express";
+import cors from "cors";
+import { createServer } from "http";
+import { Server } from "socket.io";
+import sequelize from "./models/db.js";
+import cardRoutes from "./routes/cardRoutes.js"; 
+import authRoutes from "./routes/authRoutes.js";
 
 const app = express();
-const http = require("http");
-const { Server } = require("socket.io");
-
-// Create HTTP server (Required for Socket.io)
-const server = http.createServer(app);
+const server = createServer(app); // Create HTTP server for Socket.io
 const io = new Server(server, {
   cors: {
     origin: "http://localhost:5173", // Change if using another port for frontend
@@ -27,7 +19,10 @@ const io = new Server(server, {
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Routes
 app.use("/api", cardRoutes); // Mount API routes
+app.use("/auth", authRoutes); // Mount authentication routes
 
 // Socket.io Connection
 io.on("connection", (socket) => {
@@ -41,15 +36,14 @@ io.on("connection", (socket) => {
 // Sync Database Before Starting Server
 (async () => {
   try {
-    await sequelize.sync({ force: true }); // Change to 'true' ONLY if you want to reset tables
+    await sequelize.sync({ force: false }); // Change to 'true' ONLY if resetting tables
     console.log("Database synced successfully.");
-    
+
     // Start the server AFTER database sync
     const PORT = process.env.PORT || 3000;
     server.listen(PORT, () => {
       console.log(`Server running on http://localhost:${PORT}`);
     });
-
   } catch (error) {
     console.error("Database sync failed:", error);
   }

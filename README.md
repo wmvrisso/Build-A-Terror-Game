@@ -32,6 +32,7 @@ In **Build-A-Terror**, players step into the shoes of a mad scientist, with the 
 ## File Structure
 
 Build-A-Terror-Game
+├─ .editorconfig
 ├─ client
 │  ├─ .babelrc
 │  ├─ index.html
@@ -45,10 +46,10 @@ Build-A-Terror-Game
 │  │  │  ├─ bg.png
 │  │  │  ├─ Build.css
 │  │  │  ├─ card-back.png
-│  │  │  ├─ greenBG.png
+│  │  │  ├─ index-C7yZTzWi.css
+│  │  │  ├─ index-DIyvQUoO.js
 │  │  │  ├─ logo.png
 │  │  │  ├─ monster-logo.png
-│  │  │  ├─ stoneBG.png
 │  │  │  └─ style.css
 │  │  └─ favicon.png
 │  ├─ README.md
@@ -56,16 +57,13 @@ Build-A-Terror-Game
 │  ├─ src
 │  │  ├─ App.jsx
 │  │  ├─ components
-│  │  │  ├─ App.css
 │  │  │  ├─ Dashboard.jsx
-│  │  │  ├─ Footer.jsx
-│  │  │  ├─ Header.jsx
-│  │  │  ├─ Left.jsx
 │  │  │  ├─ Login.jsx
 │  │  │  └─ PhaserGame.jsx
 │  │  ├─ context
 │  │  │  └─ AuthContext.js
 │  │  ├─ gameUI.jsx
+│  │  ├─ main.jsx
 │  │  ├─ pages
 │  │  │  ├─ Game.jsx
 │  │  │  └─ Home.jsx
@@ -98,8 +96,21 @@ Build-A-Terror-Game
 │  ├─ query.sql
 │  ├─ schema.sql
 │  └─ seed.sql
+├─ eslint.config.js
 ├─ package-lock.json
 ├─ package.json
+├─ public
+│  ├─ background.png
+│  ├─ battlefieldBG.png
+│  ├─ bg.png
+│  ├─ Build.css
+│  ├─ card-back.png
+│  ├─ favicon.png
+│  ├─ greenBG.png
+│  ├─ logo.png
+│  ├─ monster-logo.png
+│  ├─ stoneBG.png
+│  └─ style.css
 ├─ README.md
 └─ server
    ├─ controllers

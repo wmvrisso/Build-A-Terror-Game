@@ -1,39 +1,56 @@
-const express = require('express');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const bodyParser = require('body-parser');
+import { useState } from 'react';
+import axios from 'axios';
 
-const app = express();
-const PORT = process.env.PORT || 5000;
-const SECRET_KEY = 'your_secret_key'; // Replace with your secret key
+const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [message, setMessage] = useState('');
+  const [token, setToken] = useState(localStorage.getItem('token') || '');
 
-app.use(bodyParser.json());
+  const handleRegister = async () => {
+    try {
+      const response = await axios.post('http://localhost:5000/auth/register', { username, password });
+      setMessage(response.data.message);
+    } catch (error) {
+      setMessage(error.response?.data?.message || 'Registration failed');
+    }
+  };
 
-let users = []; // In-memory user storage (use a database in production)
+  const handleLogin = async () => {
+    try {
+      const response = await axios.post('http://localhost:5000/auth/login', { username, password });
+      localStorage.setItem('token', response.data.token);
+      setToken(response.data.token);
+      setMessage('Login successful!');
+    } catch (error) {
+      setMessage(error.response?.data?.message || 'Login failed');
+    }
+  };
 
-// Register route
-app.post('/register', async (req, res) => {
-  const { username, password } = req.body;
-  const hashedPassword = await bcrypt.hash(password, 10);
-  users.push({ username, password: hashedPassword });
-  res.status(201).send('User registered');
-});
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    setToken('');
+    setMessage('Logged out successfully.');
+  };
 
-// Login route
-app.post('/login', async (req, res) => {
-  const { username, password } = req.body;
-  const user = users.find(u => u.username === username);
-  if (!user) {
-    return res.status(400).send('Invalid credentials');
-  }
-  const isPasswordValid = await bcrypt.compare(password, user.password);
-  if (!isPasswordValid) {
-    return res.status(400).send('Invalid credentials');
-  }
-  const token = jwt.sign({ username: user.username }, SECRET_KEY, { expiresIn: '1h' });
-  res.json({ token });
-});
+  return (
+    <div style={{ textAlign: 'center', padding: '20px' }}>
+      <h2>{token ? 'Welcome!' : 'Login'}</h2>
+      {!token ? (
+        <>
+          <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} />
+          <br />
+          <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <br />
+          <button onClick={handleRegister}>Register</button>
+          <button onClick={handleLogin}>Login</button>
+        </>
+      ) : (
+        <button onClick={handleLogout}>Logout</button>
+      )}
+      <p>{message}</p>
+    </div>
+  );
+};
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+export default Login;

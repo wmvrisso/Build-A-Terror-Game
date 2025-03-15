@@ -1,18 +1,18 @@
-const pool = require("../models/db");
+import sequelize from "../models/db.js";
 
-exports.getRandomCard = async (req, res) => {
+export const getRandomCard = async (req, res) => {
   try {
     console.log("Incoming request query:", req.query);
 
     const { part } = req.query;
-  
+
     if (!part) return res.status(400).json({ error: "Missing part type" });
 
     console.log("✔️ Received part:", part);
 
     // Fetch rarity distribution
     const rarityQuery = `SELECT rarity, probability FROM rarity_distribution`;
-    const [rows] = await pool.query(rarityQuery);//array or object?
+    const [rows] = await sequelize.query(rarityQuery);
 
     console.log("✔️ Fetched rarity data:", rows); // ✅ Should now display correctly
 
@@ -45,8 +45,11 @@ exports.getRandomCard = async (req, res) => {
       ORDER BY RANDOM()
       LIMIT 1;
     `;
+
     // Destructure the result; Sequelize returns [results, metadata]
-    const [results] = await pool.query(cardQuery, { replacements: {part, selectedRarity} });
+    const [results] = await sequelize.query(cardQuery, {
+      replacements: { part, selectedRarity }
+    });
 
     console.log("✔️ Card Query Result:", results);
 
@@ -56,7 +59,6 @@ exports.getRandomCard = async (req, res) => {
     }
 
     res.json(results[0]);
-
 
   } catch (error) {
     console.error("❌ Server error fetching random card:", error);

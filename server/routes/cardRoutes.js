@@ -1,7 +1,8 @@
-const express = require("express");
+import express from "express";
+import { getRandomCard } from "../controllers/cardController.js"; // Add `.js` extension for ES modules
+
 const router = express.Router();
-const { getRandomCard } = require("../controllers/cardController");
 
 router.get("/cards/random", getRandomCard);
 
-module.exports = router;
+export default router; // Use `export default` instead of `module.exports`
