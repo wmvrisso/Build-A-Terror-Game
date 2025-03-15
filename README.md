@@ -32,6 +32,7 @@ In **Build-A-Terror**, players step into the shoes of a mad scientist, with the 
 ## File Structure
 
 Build-A-Terror-Game
+├─ .editorconfig
 ├─ client
 │  ├─ .babelrc
 │  ├─ index.html
@@ -40,6 +41,17 @@ Build-A-Terror-Game
 │  ├─ package-lock.json
 │  ├─ package.json
 │  ├─ public
+│  │  ├─ assets
+│  │  │  ├─ background.png
+│  │  │  ├─ bg.png
+│  │  │  ├─ Build.css
+│  │  │  ├─ card-back.png
+│  │  │  ├─ index-C7yZTzWi.css
+│  │  │  ├─ index-DIyvQUoO.js
+│  │  │  ├─ logo.png
+│  │  │  ├─ monster-logo.png
+│  │  │  └─ style.css
+│  │  └─ favicon.png
 │  ├─ README.md
 │  ├─ screenshot.png
 │  ├─ src
@@ -84,6 +96,7 @@ Build-A-Terror-Game
 │  ├─ query.sql
 │  ├─ schema.sql
 │  └─ seed.sql
+├─ eslint.config.js
 ├─ package-lock.json
 ├─ package.json
 ├─ public
@@ -126,4 +139,3 @@ To get started with **Build-A-Terror**, follow these steps:
 If you have any questions or suggestions, feel free to reach out to
 
 ``
-

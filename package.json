@@ -1,4 +1,9 @@
 {
+  "type": "module",
+  "name": "build-a-terror-game",
+  "version": "1.0.0",
+  "description": "Welcome to Build-A-Terror...",
+  "main": "./server/main.jsx",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
@@ -8,12 +13,9 @@
     "sequelize": "^6.37.6",
     "socket.io": "^4.8.1"
   },
-  "name": "build-a-terror-game",
-  "version": "1.0.0",
-  "description": "Welcome to **Build-A-Terror**, a monster building game where creativity meets chaos! In this laboratory, you have the power to assemble terrifying monsters from a collection of spare parts from past experiments gone awry.  Once your creature is complete, unleash it in battles against opponents to see whose monstrosity reigns supreme!",
-  "main": "./server/main.jsx",
   "devDependencies": {
     "eslint": "^9.22.0",
+    "eslint-config-react-app": "^7.0.1",
     "eslint-plugin-react": "^7.37.4",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.19",
@@ -29,14 +31,14 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/phaserjs/template-webpack.git"
+    "url": "git+https://github.com/wmvrisso/Build-A-Terror-Game"
   },
   "keywords": [
     "card",
     "game"
   ],
   "bugs": {
-    "url": "https://github.com/phaserjs/template-webpack/issues"
+    "url": "https://github.com/wmvrisso/Build-A-Terror-Game/issues"
   },
-  "homepage": "https://github.com/phaserjs/template-webpack#readme"
+  "homepage": "https://github.com/wmvrisso/Build-A-Terror-Game#readme"
 }
