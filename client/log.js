@@ -16,18 +16,20 @@ export const main = async () => {
 
     try {
         const req = https.request(options, (res) => {
-            res.on('data', () => {});
+            res.on('data', () => {}); // Keeping this empty as per original intent
             res.on('end', () => {
                 process.exit(0);
             });
         });
 
-        req.on('error', (error) => {
+        req.on('error', (err) => {
+            console.error(`Request error: ${err.message}`); // Logs error before exiting
             process.exit(1);
         });
 
         req.end();
-    } catch (error) {
+    } catch (err) {
+        console.error(`Unexpected error: ${err.message}`); // Logs error before exiting
         process.exit(1);
     }
 }

@@ -11,14 +11,25 @@ const app = express();
 const server = createServer(app); // Create HTTP server for Socket.io
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:5173", // Change if using another port for frontend
+    origin: "http://localhost:5173", // Allow frontend
     methods: ["GET", "POST"],
+    allowedHeaders: ["Content-Type"],
+    credentials: true, // Allow credentials
   },
+  transports: ["websocket", "polling"], // Ensure WebSockets work
 });
 
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+app.use((req, res, next) => {
+  res.setHeader(
+    "Content-Security-Policy",
+    "default-src 'self'; connect-src 'self' ws://localhost:3000 ws://localhost:5173;"
+  );
+  next();
+});
 
 // Routes
 app.use("/api", cardRoutes); // Mount API routes
@@ -48,3 +59,5 @@ io.on("connection", (socket) => {
     console.error("Database sync failed:", error);
   }
 })();
+
+console.log("JWT_SECRET:", process.env.JWT_SECRET ? "Loaded" : "Not Found");

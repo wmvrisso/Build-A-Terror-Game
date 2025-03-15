@@ -5,20 +5,17 @@
   "description": "Welcome to Build-A-Terror...",
   "main": "./server/main.jsx",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
     "pg": "^8.13.3",
     "react-router-dom": "^7.3.0",
     "sequelize": "^6.37.6",
     "socket.io": "^4.8.1"
   },
   "devDependencies": {
-    "eslint": "^9.22.0",
-    "eslint-config-react-app": "^7.0.1",
-    "eslint-plugin-react": "^7.37.4",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.19",
     "nodemon": "^3.1.9",
     "sequelize-cli": "^6.6.2"
   },

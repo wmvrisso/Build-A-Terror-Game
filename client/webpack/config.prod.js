@@ -49,7 +49,7 @@ export default {
             "typeof FEATURE_SOUND": JSON.stringify(true)
         }),
         new HtmlWebpackPlugin({
-            template: "./index.html"
+            template: "../index.html"
         })
     ]
 };
