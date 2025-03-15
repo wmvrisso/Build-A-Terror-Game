@@ -66,7 +66,6 @@ Build-A-Terror-Game
 │  │  ├─ context
 │  │  │  └─ AuthContext.js
 │  │  ├─ gameUI.jsx
-│  │  ├─ index.jsx
 │  │  ├─ pages
 │  │  │  ├─ Game.jsx
 │  │  │  └─ Home.jsx
