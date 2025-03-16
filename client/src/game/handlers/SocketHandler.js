@@ -3,23 +3,28 @@ import { io } from "socket.io-client";
 export default class SocketHandler {
   constructor(scene) {
     this.scene = scene;
-    
-    // ✅ **Fixing WebSocket Connection**
+
+    console.log("🟢 Attempting WebSocket connection...");
+
     this.socket = io("ws://localhost:3000", {
       transports: ["websocket"],
-      reconnection: true,
+      reconnection: true
     });
 
     this.socket.on("connect", () => {
-      console.log("✅ Socket.IO Connected!", this.socket.id);
+      console.log("✅ WebSocket Connected! ID:", this.socket.id);
     });
 
-    this.socket.on("disconnect", () => {
-      console.log("🔌 Socket.IO Disconnected.");
+    this.socket.on("connect_error", (err) => {
+      console.error("❌ WebSocket Connection Error:", err);
     });
 
     this.socket.on("serverMessage", (data) => {
       console.log("📩 Server Message:", data.message);
+    });
+
+    this.socket.on("disconnect", (reason) => {
+      console.log("🔌 WebSocket Disconnected:", reason);
     });
 
     this.socket.on("phaseChange", (phase) => {

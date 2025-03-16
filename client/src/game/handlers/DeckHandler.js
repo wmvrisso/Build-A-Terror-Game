@@ -11,39 +11,38 @@ export default class DeckHandler {
   // Loads deck with random cards based on rarity
   async loadDeck() {
     try {
-      // Fetch 4 random cards for each body part
-      const parts = ["Head", "Body", "Legs"];
-      const deck = { Head: [], Body: [], Legs: [] };
+        const parts = ["Head", "Body", "Legs"];
+        const deck = { Head: [], Body: [], Legs: [] };
 
-      for (let part of parts) {
-        for (let i = 0; i < 4; i++) {
-          try {
-            const response = await api.get(`/cards/random?part=${part}`);
-            if (response.data) {
-              deck[part].push(response.data);
+        for (let part of parts) {
+            for (let i = 0; i < 4; i++) {  // 4 cards are drawn
+                try {
+                    const response = await api.get(`/cards/random?part=${part}`);
+                    if (response.data) {
+                        deck[part].push(response.data);
+                    }
+                } catch (error) {
+                    console.warn(`Failed to fetch ${part} card`, error);
+                }
             }
-          } catch (error) {
-            console.warn(`Failed to fetch ${part} card`, error);
-          }
         }
-      }
 
-      this.headDeck = this.shuffleDeck(deck.Head);
-      this.bodyDeck = this.shuffleDeck(deck.Body);
-      this.legsDeck = this.shuffleDeck(deck.Legs);
+        this.headDeck = this.shuffleDeck(deck.Head);
+        this.bodyDeck = this.shuffleDeck(deck.Body);
+        this.legsDeck = this.shuffleDeck(deck.Legs);
 
-      console.log("Decks loaded successfully");
+        console.log("✅ Decks loaded successfully:", this.getDeck());
     } catch (error) {
-      console.error("Error loading deck:", error);
+        console.error("❌ Error loading deck:", error);
     }
   }
 
   // Separates and shuffles deck into categories
-separateAndShuffleDeck(deck) {
-  this.headDeck = this.shuffleDeck(deck.filter((card) => card.type === "head"));
-  this.bodyDeck = this.shuffleDeck(deck.filter((card) => card.type === "body")); // Fixed from torso to body
-  this.legsDeck = this.shuffleDeck(deck.filter((card) => card.type === "legs"));
-}
+  separateAndShuffleDeck(deck) {
+    this.headDeck = this.shuffleDeck(deck.filter((card) => card.type === "head"));
+    this.bodyDeck = this.shuffleDeck(deck.filter((card) => card.type === "body"));
+    this.legsDeck = this.shuffleDeck(deck.filter((card) => card.type === "legs"));
+  }
 
   shuffleDeck(deck) {
     for (let i = deck.length - 1; i > 0; i--) {
@@ -53,28 +52,34 @@ separateAndShuffleDeck(deck) {
     return deck;
   }
 
-  drawCards(deckType, num) {
-    let deck;
+  getDeckByType(deckType) {
     switch (deckType) {
-      case "Head":
-        deck = this.headDeck;
-        break;
-      case "Body":
-        deck = this.bodyDeck;
-        break;
-      case "Legs":
-        deck = this.legsDeck;
-        break;
-      default:
-        console.warn("Invalid deck type!");
-        return [];
+        case "Head":
+            return this.headDeck;
+        case "Body":
+            return this.bodyDeck;
+        case "Legs":
+            return this.legsDeck;
+        default:
+            console.warn("Invalid deck type!");
+            return [];
+    }
+  }
+
+  async drawCards(deckType, num = 4) { 
+    let deck = this.getDeckByType(deckType);
+
+    if (!deck || deck.length < num) {
+        console.warn(`Deck is empty, forcing reload for ${deckType}...`);
+        await this.loadDeck();
+        deck = this.getDeckByType(deckType);
     }
 
     if (deck.length < num) {
-      console.warn(`Not enough cards in the ${deckType} deck!`);
-      return [];
+        console.warn(`Not enough cards in the ${deckType} deck even after reload!`);
+        return [];
     }
-    return deck.splice(0, num); // Remove and return drawn cards
+    return deck.splice(0, num);
   }
 
   // Counts remaining cards in the deck
@@ -129,21 +134,7 @@ separateAndShuffleDeck(deck) {
   }
 
   getCardById(deckType, id) {
-    let deck;
-    switch (deckType) {
-      case "Head":
-        deck = this.headDeck;
-        break;
-      case "Body":
-        deck = this.bodyDeck;
-        break;
-      case "Legs":
-        deck = this.legsDeck;
-        break;
-      default:
-        console.warn("Invalid deck type!");
-        return null;
-    }
+    let deck = this.getDeckByType(deckType);
     return deck.find((c) => c.id === id);
   }
 }

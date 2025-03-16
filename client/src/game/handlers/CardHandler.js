@@ -58,15 +58,34 @@ export default class CardHandler {
   }
 
   // Flip card (rotates the card instead of just logging)
-  flipCard(card) {
-    console.log(`Flipped card: ${card.cardId}`);
+  flipCard(card, cardBack, cardFront, type) {
+    if (!card || !cardBack || !cardFront) {
+        console.warn("🚨 flipCard() received undefined elements!");
+        return;
+    }
+
+    console.log(`Flipping card: ${card.cardData ? card.cardData.name : "UNKNOWN"}`);
+
     this.scene.tweens.add({
-      targets: card,
-      scaleX: 0, // Shrink to simulate flip effect
-      duration: 150,
-      onComplete: () => {
-        card.scaleX = 1; // Restore after flip
-      },
+        targets: card,
+        scaleX: 0, // Shrink for flip animation
+        duration: 150,
+        onComplete: () => {
+            if (card.isFlipped) {
+                cardBack.setVisible(true);
+                cardFront.setVisible(false);
+            } else {
+                cardBack.setVisible(false);
+                cardFront.setVisible(true);
+            }
+            card.isFlipped = !card.isFlipped;
+
+            this.scene.tweens.add({
+                targets: card,
+                scaleX: 1, // Restore normal size
+                duration: 150,
+            });
+        },
     });
   }
 

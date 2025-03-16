@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Phaser from "phaser";
 import PhaserGame from "./game/PhaserGame";
 
@@ -175,7 +175,7 @@ const GameUI = () => {
                         Battle An Opponent
                     </button>
                 </section>
-                <PhaserGame currentActiveScene={GameScene}></PhaserGame>
+                <PhaserGame currentActiveScene={Battle}></PhaserGame>
             </main>
 
             {showLoginForm && (
@@ -256,5 +256,6 @@ const GameUI = () => {
     );
 };
 
-export default { GameUI, App };
+export default  App;
+export { GameUI }
 

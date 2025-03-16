@@ -49,25 +49,20 @@ Build-A-Terror-Game
 │  │  │  ├─ index-C7yZTzWi.css
 │  │  │  ├─ index-DIyvQUoO.js
 │  │  │  ├─ logo.png
-│  │  │  ├─ monster-logo.png
-│  │  │  └─ style.css
-│  │  └─ favicon.png
+│  │  │  └─ monster-logo.png
+│  │  ├─ favicon.png
+│  │  └─ style.css
 │  ├─ README.md
 │  ├─ screenshot.png
 │  ├─ src
 │  │  ├─ App.jsx
 │  │  ├─ components
 │  │  │  ├─ Dashboard.jsx
-│  │  │  ├─ Login.jsx
-│  │  │  └─ PhaserGame.jsx
+│  │  │  └─ Login.jsx
 │  │  ├─ context
 │  │  │  └─ AuthContext.js
-│  │  ├─ gameUI.jsx
-│  │  ├─ main.jsx
-│  │  ├─ pages
-│  │  │  ├─ Game.jsx
-│  │  │  └─ Home.jsx
-│  │  ├─ phaser
+│  │  ├─ game
+│  │  │  ├─ EventBus.js
 │  │  │  ├─ handlers
 │  │  │  │  ├─ CardHandler.js
 │  │  │  │  ├─ DeckHandler.js
@@ -76,19 +71,25 @@ Build-A-Terror-Game
 │  │  │  │  ├─ SocketHandler.js
 │  │  │  │  ├─ UIHandler.js
 │  │  │  │  └─ ZoneHandler.js
+│  │  │  ├─ main.js
+│  │  │  ├─ PhaserGame.jsx
 │  │  │  └─ scenes
 │  │  │     ├─ Boot.js
 │  │  │     ├─ Build.jsx
+│  │  │     ├─ Game.js
 │  │  │     ├─ GameOver.js
-│  │  │     ├─ GameScene.js
 │  │  │     ├─ MainMenu.js
 │  │  │     └─ Preloader.js
+│  │  ├─ gameUI.jsx
+│  │  ├─ main.jsx
+│  │  ├─ pages
+│  │  │  ├─ Game.jsx
+│  │  │  └─ Home.jsx
 │  │  ├─ services
 │  │  │  └─ api.js
 │  │  └─ styles
 │  │     ├─ gameUI.css
 │  │     └─ input.css
-│  ├─ vite.config.js
 │  └─ webpack
 │     ├─ config.js
 │     └─ config.prod.js
@@ -97,6 +98,7 @@ Build-A-Terror-Game
 │  ├─ schema.sql
 │  └─ seed.sql
 ├─ eslint.config.js
+├─ index.html
 ├─ package-lock.json
 ├─ package.json
 ├─ public
@@ -112,13 +114,21 @@ Build-A-Terror-Game
 │  ├─ stoneBG.png
 │  └─ style.css
 ├─ README.md
-└─ server
-   ├─ controllers
-   │  └─ cardController.js
-   ├─ models
-   │  ├─ card.js
-   │  └─ db.js
-   └─ server.js
+├─ server
+│  ├─ controllers
+│  │  └─ cardController.js
+│  ├─ middleware
+│  │  └─ authMiddleware.js
+│  ├─ models
+│  │  ├─ card.js
+│  │  ├─ db.js
+│  │  ├─ index.js
+│  │  └─ user.js
+│  └─ server.js
+└─ vite
+   ├─ config.dev.mjs
+   ├─ config.prod.mjs
+   └─ vite.config.js
 
 ## Technologies Used
 
