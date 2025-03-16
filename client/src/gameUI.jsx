@@ -1,13 +1,13 @@
-// import Boot from "./phaser/scenes/Boot";
-// import Game from "./phaser/scenes/GameScene";
-// import GameOver from "./phaser/scenes/GameOver";
-// import MainMenu from "./phaser/scenes/MainMenu";
-// import Preloader from "./phaser/scenes/Preloader";
+// import Boot from "./game/scenes/Boot";
+// import Game from "./game/scenes/GameScene";
+// import GameOver from "./game/scenes/GameOver";
+// import MainMenu from "./game/scenes/MainMenu";
+// import Preloader from "./game/scenes/Preloader";
 
 // import React, {useState} from "react";
 // import "./styles/gameUI.css";
 // import PhaserGame from "./components/PhaserGame";
-// import GameScene from "./phaser/scenes/GameScene";
+// import GameScene from "./game/scenes/GameScene";
 
 // const GameUI = () => {
 
