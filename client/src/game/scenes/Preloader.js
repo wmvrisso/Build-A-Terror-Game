@@ -16,7 +16,7 @@ export default class Preloader extends Phaser.Scene {
   }
 
   create() {
-    console.log("Preloader Complete - Starting GameScene...");
-    this.scene.start("GameScene"); // Move directly to GameScene
+    console.log("Preloader Complete - Starting Main Menu...");
+    this.scene.start("MainMenu"); // Move directly to Main Menu
   }
 }

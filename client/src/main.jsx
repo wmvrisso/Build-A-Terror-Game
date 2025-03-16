@@ -20,7 +20,7 @@ root.render(
 
 
 // import Boot from "./phaser/scenes/Boot";
-// import Game from "./phaser/scenes/GameScene";
+// import Game from "./phaser/scenes/Battle";
 // import GameOver from "./phaser/scenes/GameOver";
 // import MainMenu from "./phaser/scenes/MainMenu";
 // import Preloader from "./phaser/scenes/Preloader";

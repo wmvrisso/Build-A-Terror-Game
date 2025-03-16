@@ -2,11 +2,11 @@ import CardHandler from '..//helpers/CardHandler';
 import DeckHandler from '..//helpers/DeckHandler';
 import PlayerHandler from '..//helpers/PlayerHandler';
 import SocketHandler from '..//helpers/SocketHandler';
-import GameHandler from '../helpers/GameHandler';
+import BattleHandler from '../helpers/BattleHandler';
 import ZoneHandler from '../helpers/ZoneHandler';
 import { Scene } from 'phaser';
 
-export class Game extends Scene
+export class Battle extends Scene
 {
     constructor ()
     {
@@ -19,7 +19,7 @@ export class Game extends Scene
         this.DeckHandler = new DeckHandler(this);
         this.PlayerHandler = new PlayerHandler(this);
         this.SocketHandler = new SocketHandler(this);
-        this.GameHandler = new GameHandler(this);
+        this.BattleHandler = new BattleHandler(this);
         this.ZoneHandler = new ZoneHandler(this);
 
         this.cameras.main.setBackgroundColor(0x00ff00);

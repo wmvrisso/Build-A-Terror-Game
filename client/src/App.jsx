@@ -175,7 +175,7 @@ const GameUI = () => {
                         Battle An Opponent
                     </button>
                 </section>
-                <PhaserGame currentActiveScene={GameScene}></PhaserGame>
+                <PhaserGame currentActiveScene={Battle}></PhaserGame>
             </main>
 
             {showLoginForm && (
