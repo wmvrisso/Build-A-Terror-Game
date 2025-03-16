@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Phaser from "phaser";
-import PhaserGame from "./components/PhaserGame";
+import PhaserGame from "./game/PhaserGame";
+import SocketHandler from "./game/handlers/SocketHandler.js";
 
 // This is the main entry point for the React application. It imports the PhaserGame component and sets up the main game UI.
 function App() {
