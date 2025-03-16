@@ -1,15 +1,25 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+import { createRoot } from "react-dom/client"; // ✅ Corrected import
+import App from "./App";
+import SocketHandler from "./game/handlers/SocketHandler.js"; // ✅ Ensure correct import
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+console.log("🚀 Initializing Game..."); // ✅ Debugging line
+
+// ✅ Initialize WebSocket after React has loaded
+const socketTest = new SocketHandler();
+socketTest.socket.emit("testMessage", { message: "Hello WebSocket!" });
+
+// ✅ Mount React correctly
+const container = document.getElementById("root");
+const root = createRoot(container); // ✅ Fix: Use createRoot from "react-dom/client"
+root.render(
     <React.StrictMode>
         <App />
     </React.StrictMode>
 );
 
 // import Boot from "./phaser/scenes/Boot";
-// import Game from "./phaser/scenes/GameScene";
+// import Game from "./phaser/scenes/Battle";
 // import GameOver from "./phaser/scenes/GameOver";
 // import MainMenu from "./phaser/scenes/MainMenu";
 // import Preloader from "./phaser/scenes/Preloader";
@@ -68,5 +78,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 //     console.warn("React is already mounted.");
 // }
 
-
 // export default window.phaserGame;
+
