@@ -19,48 +19,59 @@ const io = new Server(server, {
   transports: ["websocket", "polling"], // Ensures WebSockets are used
 });
 
+// ✅ **Fix: Keep Only One WebSocket Handler**
+io.on("connection", (socket) => {
+  console.log(`✅ WebSocket Client Connected: ${socket.id}`);
 
-// Middleware
+  // 🔍 **Log all incoming messages**
+  socket.onAny((event, ...args) => {
+    console.log(`📩 Received event: ${event}`, args);
+  });
+
+  // ✅ Send a test message when a client connects
+  socket.emit("serverMessage", { message: "Welcome to WebSockets!" });
+
+  // 🔌 **Detect disconnections**
+  socket.on("disconnect", (reason) => {
+    console.log(`🔌 WebSocket Client Disconnected: ${socket.id}, Reason: ${reason}`);
+  });
+
+  // 🛠 **New test event**
+  socket.on("testMessage", (data) => {
+    console.log(`📩 Received from client: ${data}`);
+    socket.emit("serverResponse", { message: "Hello from server!" });
+  });
+});
+
+// ✅ Middleware
 app.use(cors());
 app.use(express.json());
 
-// ✅ **FIX: Explicitly Allow WebSockets in Content Security Policy**
+// ✅ **Fix: Explicitly Allow WebSockets in Content Security Policy**
 app.use((req, res, next) => {
   res.setHeader(
     "Content-Security-Policy",
-    "default-src 'self'; connect-src 'self' ws://localhost:3000 ws://127.0.0.1:3000 ws://* wss://*; frame-ancestors 'self';"
+    "default-src 'self'; connect-src 'self' ws://localhost:3000 ws://127.0.0.1:3000 ws://* wss://*; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com;"
   );
   next();
 });
 
-// Test Route
-app.get("/test", (req, res) => {
-  res.send("Server is running!");
+
+// ✅ Test Route (Fix for 404 on `/`)
+app.get("/", (req, res) => {
+  res.send("<h1>Server is Running!</h1>");
 });
 
+// ✅ API Routes
+app.use("/api", cardRoutes);
+app.use("/auth", authRoutes);
 
-// Routes
-app.use("/api", cardRoutes); // Mount API routes
-app.use("/auth", authRoutes); // Mount authentication routes
-
-// ✅ **Fixing WebSocket Handling**
-io.on("connection", (socket) => {
-  console.log(`✅ WebSocket Client Connected: ${socket.id}`);
-  socket.emit("serverMessage", { message: "Welcome to WebSockets!" });
-
-  socket.on("disconnect", () => {
-    console.log(`🔌 WebSocket Client Disconnected: ${socket.id}`);
-  });
-});
-
-
-// Sync Database Before Starting Server
+// ✅ **Fix: Start Server AFTER Database Sync**
 (async () => {
   try {
     await sequelize.sync({ force: false });
     console.log("Database synced successfully.");
 
-    // Start the server AFTER database sync
     const PORT = process.env.PORT || 3000;
     server.listen(PORT, () => {
       console.log(`🚀 Server running on http://localhost:${PORT}`);
