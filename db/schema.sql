@@ -1,5 +1,5 @@
--- DROP DATABASE IF EXISTS creation_db;
--- CREATE DATABASE creation_db;
+DROP DATABASE IF EXISTS creation_db;
+CREATE DATABASE creation_db;
 
 \c creation_db;
 
