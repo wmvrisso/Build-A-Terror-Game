@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import Phaser from "phaser";
 import PhaserGame from "./game/PhaserGame";
-import "./public/style.css";
+import "/public/style.css";
 
 import SocketHandler from "./game/handlers/SocketHandler.js";
 
