@@ -1,5 +1,3 @@
--- Drop and recreate the database
--- Uncomment these lines if you need to recreate the database from scratch
 DROP DATABASE IF EXISTS creation_db;
 CREATE DATABASE creation_db;
 
