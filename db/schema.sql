@@ -1,5 +1,7 @@
--- DROP DATABASE IF EXISTS creation_db;
--- CREATE DATABASE creation_db;
+-- Drop and recreate the database
+-- Uncomment these lines if you need to recreate the database from scratch
+DROP DATABASE IF EXISTS creation_db;
+CREATE DATABASE creation_db;
 
 \c creation_db;
 
@@ -34,5 +36,14 @@ CREATE TABLE effectiveness_chart (
     id SERIAL PRIMARY KEY,
     attacker VARCHAR(50) REFERENCES monster_types(name),
     defender VARCHAR(50) REFERENCES monster_types(name),
-    multiplier FLOAT NOT NULL
+    multiplier DOUBLE PRECISION NOT NULL
+);
+
+-- Users Table (If You Need Authentication)
+CREATE TABLE Users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    createdAt TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updatedAt TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
