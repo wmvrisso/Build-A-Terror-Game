@@ -1,6 +1,10 @@
 import React, { useState, useRef } from "react";
 import Phaser from "phaser";
 import PhaserGame from "./game/PhaserGame";
+<<<<<<< HEAD
+=======
+import "/public/style.css";
+>>>>>>> 614a31579abd3eabe35de7a8553b0529fb7d13d6
 
 import SocketHandler from "./game/handlers/SocketHandler.js";
 
