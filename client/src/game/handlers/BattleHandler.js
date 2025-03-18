@@ -1,4 +1,4 @@
-export default class GameHandler {
+export default class BattleHandler {
   constructor(socket) {
     this.games = [];
     this.players = {}; // Initialize players
@@ -72,18 +72,6 @@ export default class GameHandler {
     );
     this.socket.sendUpdateHP(defenderId, this.players[defenderId].hp);
     this.checkGameOver();
-  }
-
-  addGame(game) {
-    this.games.push(game);
-  }
-
-  removeGame(game) {
-    this.games = this.games.filter((g) => g.id !== game.id);
-  }
-
-  getGames() {
-    return this.games;
   }
 
   // Called when a player ends their turn

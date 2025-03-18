@@ -1,6 +1,7 @@
 import React from "react";
 import { createRoot } from "react-dom/client"; // ✅ Corrected import
-import App from "./App";
+import App from "./App.jsx";
+import "./style.css"; // ✅ Ensure CSS is imported
 import SocketHandler from "./game/handlers/SocketHandler.js"; // ✅ Ensure correct import
 
 console.log("🚀 Initializing Game..."); // ✅ Debugging line

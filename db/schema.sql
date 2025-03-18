@@ -36,3 +36,4 @@ CREATE TABLE effectiveness_chart (
     defender VARCHAR(50) REFERENCES monster_types(name),
     multiplier FLOAT NOT NULL
 );
+
