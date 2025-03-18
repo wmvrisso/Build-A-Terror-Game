@@ -16,9 +16,13 @@ const Card = sequelize.define("Card", {
     allowNull: false,
   },
   type: {
-    type: DataTypes.STRING,
+    type: DataTypes.INTEGER,
     allowNull: false,
-  },
+    references: {
+      model: "MonsterTypes", // assuming your model is named "MonsterTypes"
+      key: "id"
+    }
+  },  
   part: {
     type: DataTypes.ENUM("Head", "Body", "Legs"),
     allowNull: false,
