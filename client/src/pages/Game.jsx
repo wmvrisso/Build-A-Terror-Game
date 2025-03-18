@@ -1,10 +1,10 @@
-import CardHandler from "..//helpers/CardHandler";
-import DeckHandler from "..//helpers/DeckHandler";
-import PlayerHandler from "..//helpers/PlayerHandler";
-import SocketHandler from "..//helpers/SocketHandler";
-import BattleHandler from "../helpers/BattleHandler";
-import ZoneHandler from "../helpers/ZoneHandler";
-import { Scene } from "phaser";
+import CardHandler from '..//helpers/CardHandler';
+import DeckHandler from '..//helpers/DeckHandler';
+import PlayerHandler from '..//helpers/PlayerHandler';
+import SocketHandler from '..//helpers/SocketHandler';
+import BattleHandler from '../helpers/BattleHandler';
+import ZoneHandler from '../helpers/ZoneHandler';
+import { Scene } from 'phaser';
 
 export class Battle extends Scene {
     constructor() {
