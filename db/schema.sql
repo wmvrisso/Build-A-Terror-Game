@@ -34,5 +34,19 @@ CREATE TABLE effectiveness_chart (
     id SERIAL PRIMARY KEY,
     attacker VARCHAR(50) REFERENCES monster_types(name),
     defender VARCHAR(50) REFERENCES monster_types(name),
+<<<<<<< HEAD
     multiplier FLOAT NOT NULL
 );
+=======
+    multiplier DOUBLE PRECISION NOT NULL
+);
+
+-- Users Table (If You Need Authentication)
+CREATE TABLE Users (
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    createdAt TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updatedAt TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+>>>>>>> 2ae6fd15f58bba88408422c52ec9fb5ff4156f7a
