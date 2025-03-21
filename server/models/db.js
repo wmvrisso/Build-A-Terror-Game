@@ -3,7 +3,7 @@ import { Sequelize } from "sequelize";
 import dotenv from "dotenv";
 dotenv.config(); // Load environment variables from a .env file
 
-const DB_URL = process.env.DATABASE_URL;
+const DB_URL = process.env.DB_URL;
 
 let sequelize;
 
